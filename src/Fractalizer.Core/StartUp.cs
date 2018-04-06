@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fractalizer.Core.Forms;
 
 namespace Fractalizer.Core
 {
@@ -16,7 +17,7 @@ namespace Fractalizer.Core
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new BaseForm());
         }
     }
 }

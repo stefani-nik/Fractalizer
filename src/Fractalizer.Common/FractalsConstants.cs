@@ -5,7 +5,7 @@
     /// </summary>
     public static class FractalsConstants
     {
-        public const int BitmapWidth = 400;
+        public const int BitmapWidth = 400; // Move to form constants
         public const int BitmapHeight = 400;
         public const double XRange = 4.0;
         public const double YRange = 4.0;

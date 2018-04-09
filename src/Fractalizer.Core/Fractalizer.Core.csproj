@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="Forms\SettingsPanel.Designer.cs">
       <DependentUpon>SettingsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Renderer.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\BaseForm.resx">
@@ -123,6 +125,10 @@
     <ProjectReference Include="..\Fractalizer.Common\Fractalizer.Common.csproj">
       <Project>{5ca73258-bc5e-4545-8ce1-2f0b934751c2}</Project>
       <Name>Fractalizer.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fractalizer.Fractals\Fractalizer.Fractals.csproj">
+      <Project>{2060AA1B-D7A0-46DA-8851-894428B9778E}</Project>
+      <Name>Fractalizer.Fractals</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

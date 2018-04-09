@@ -26,11 +26,12 @@ namespace Fractalizer.Core
         private readonly IFractal mandel;
         private readonly Stopwatch renderTimer;
 
-        public Renderer()
+        public Renderer(IFractal fractal)
         {
             //this.palette = ColorsManager.LoadPalette();
             this.MyBitmap = new Bitmap(FractalsConstants.BitmapWidth, FractalsConstants.BitmapHeight);
-            this.mandel = new Mandelbrot();
+            this.mandel = Mandelbrot.Instance;
+            // this.fractal = fractal;
             this.renderTimer = new Stopwatch();
         }
 

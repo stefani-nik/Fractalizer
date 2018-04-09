@@ -1,4 +1,5 @@
-﻿using Fractalizer.Common;
+﻿using System;
+using Fractalizer.Common;
 using Fractalizer.Fractals.Contracts;
 
 namespace Fractalizer.Fractals
@@ -8,6 +9,14 @@ namespace Fractalizer.Fractals
     /// </summary>
     public sealed class Mandelbrot : IFractal
     {
+
+        private static readonly Lazy<Mandelbrot> instance = 
+                                new Lazy<Mandelbrot>(() => new Mandelbrot());
+
+        public static Mandelbrot Instance => instance.Value;
+
+        private Mandelbrot() { }
+
 
         public double XStartValue { get; private set; } = FractalsConstants.StartValueX;
 

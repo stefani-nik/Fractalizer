@@ -40,7 +40,7 @@ namespace Fractalizer.Core.Forms
             this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnRender = new MetroFramework.Controls.MetroButton();
             this.colorsPanel1 = new Fractalizer.Core.Forms.ColorsPanel();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -211,15 +211,16 @@ namespace Fractalizer.Core.Forms
             this.metroTrackBar1.TabIndex = 7;
             this.metroTrackBar1.Text = "metroTrackBar1";
             // 
-            // metroButton1
+            // btnRender
             // 
-            this.metroButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton1.BackgroundImage")));
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.metroButton1.Location = new System.Drawing.Point(1109, 42);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(154, 61);
-            this.metroButton1.TabIndex = 8;
-            this.metroButton1.UseSelectable = true;
+            this.btnRender.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRender.BackgroundImage")));
+            this.btnRender.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRender.Location = new System.Drawing.Point(1109, 42);
+            this.btnRender.Name = "btnRender";
+            this.btnRender.Size = new System.Drawing.Size(154, 61);
+            this.btnRender.TabIndex = 8;
+            this.btnRender.Tag = "";
+            this.btnRender.UseSelectable = true;
             // 
             // colorsPanel1
             // 
@@ -236,7 +237,7 @@ namespace Fractalizer.Core.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.Controls.Add(this.colorsPanel1);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.btnRender);
             this.Controls.Add(this.metroTrackBar1);
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.metroTextBox4);
@@ -260,7 +261,7 @@ namespace Fractalizer.Core.Forms
         private MetroFramework.Controls.MetroTextBox metroTextBox3;
         private MetroFramework.Controls.MetroTextBox metroTextBox4;
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnRender;
         private ColorsPanel colorsPanel1;
         private MetroFramework.Controls.MetroComboBox metroComboBox1;
     }

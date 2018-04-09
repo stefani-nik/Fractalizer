@@ -60,11 +60,11 @@ namespace Fractalizer.Fractals
         /// </summary>
         public void AdjustParameters(int zoomStartX, int zoomStartY, int zoomEndX, int zoomEndY)
         {
-            double startX = this.XRange * zoomStartX / FractalsConstants.BitmapWidth;
-            double startY = this.YRange * zoomStartY / FractalsConstants.BitmapWidth;
+            double startX = this.XRange * zoomStartX / FormConstants.PicturePanelWidth;
+            double startY = this.YRange * zoomStartY / FormConstants.PicturePanelHeight;
 
-            double endX = this.XRange * zoomEndX / FractalsConstants.BitmapWidth;
-            double endY = this.YRange * zoomEndY / FractalsConstants.BitmapWidth;
+            double endX = this.XRange * zoomEndX / FormConstants.PicturePanelWidth;
+            double endY = this.YRange * zoomEndY / FormConstants.PicturePanelHeight;
 
 
             this.XStartValue += startX;
@@ -73,8 +73,8 @@ namespace Fractalizer.Fractals
             this.XRange = endX - startX;
             this.YRange = endY - startY;
 
-            this.xOffset = (endX - startX) / (double)FractalsConstants.BitmapWidth;
-            this.yOffset = (endY - startY) / (double)FractalsConstants.BitmapWidth;
+            this.xOffset = (endX - startX) / (double)FormConstants.PicturePanelWidth;
+            this.yOffset = (endY - startY) / (double)FormConstants.PicturePanelHeight;
 
         }
 

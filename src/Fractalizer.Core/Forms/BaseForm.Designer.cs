@@ -42,11 +42,9 @@ namespace Fractalizer.Core.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1366, 728);
             this.MinimumSize = new System.Drawing.Size(1364, 726);
-            //new System.Drawing.Size(FormConstants.BaseFormWidth, FormConstants.BaseFromHeight);
             this.Name = "BaseForm";
             this.Text = "Fractalizer";
             this.TransparencyKey = System.Drawing.Color.Empty;
-            this.Load += new System.EventHandler(this.BaseForm_Load);
             this.ResumeLayout(false);
 
         }

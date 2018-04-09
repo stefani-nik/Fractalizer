@@ -31,24 +31,35 @@ namespace Fractalizer.Core.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FractalPicturePanel));
+            this.fractalImg = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.fractalImg)).BeginInit();
             this.SuspendLayout();
+            // 
+            // fractalImg
+            // 
+            this.fractalImg.Location = new System.Drawing.Point(0, 0);
+            this.fractalImg.Name = "fractalImg";
+            this.fractalImg.Size = new System.Drawing.Size(1363, 484);
+            this.fractalImg.TabIndex = 0;
+            this.fractalImg.TabStop = false;
             // 
             // FractalPicturePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Location = new System.Drawing.Point(FormConstants.PicturePanelLocationX, FormConstants.PicturePanelLocationY);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.fractalImg);
+            this.Location = new System.Drawing.Point(0, 217);
             this.Name = "FractalPicturePanel";
-            this.Size = new System.Drawing.Size(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
-            this.Load += new System.EventHandler(this.FractalPicturePanel_Load);
+            this.Size = new System.Drawing.Size(1366, 484);
+            ((System.ComponentModel.ISupportInitialize)(this.fractalImg)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private PictureBox fractalImg;
     }
 }

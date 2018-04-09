@@ -8,8 +8,12 @@ namespace Fractalizer.Core.Forms
         {
             InitializeComponent();
             this.Controls.Add(new SettingsPanel());
-            this.Controls.Add(new ColorsPanel());
             this.Controls.Add(new FractalPicturePanel());
+        }
+
+        private void BaseForm_Load(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

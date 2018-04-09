@@ -1,4 +1,7 @@
-﻿namespace Fractalizer.Core.Forms
+﻿using System.Windows.Forms;
+using Fractalizer.Common;
+
+namespace Fractalizer.Core.Forms
 {
     partial class FractalPicturePanel
     {
@@ -28,13 +31,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FractalPicturePanel));
             this.SuspendLayout();
             // 
             // FractalPicturePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Location = new System.Drawing.Point(FormConstants.PicturePanelLocationX, FormConstants.PicturePanelLocationY);
             this.Name = "FractalPicturePanel";
+            this.Size = new System.Drawing.Size(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
             this.Load += new System.EventHandler(this.FractalPicturePanel_Load);
             this.ResumeLayout(false);
 

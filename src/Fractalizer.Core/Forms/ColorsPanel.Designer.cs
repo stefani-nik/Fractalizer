@@ -28,41 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // colorDialog1
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "COLOR PANEL";
+            this.colorDialog1.Color = System.Drawing.Color.Red;
+            this.colorDialog1.FullOpen = true;
             // 
-            // contextMenuStrip1
+            // button1
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button1.Location = new System.Drawing.Point(171, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 29);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Color";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ColorsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
             this.Name = "ColorsPanel";
             this.Size = new System.Drawing.Size(294, 60);
-            this.Load += new System.EventHandler(this.ColorsPanel_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button button1;
     }
 }

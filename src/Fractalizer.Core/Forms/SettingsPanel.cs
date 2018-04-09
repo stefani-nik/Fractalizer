@@ -8,5 +8,15 @@ namespace Fractalizer.Core.Forms
         {
             InitializeComponent();
         }
+
+        private void SettingsPanel_Load(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void metroButton1_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

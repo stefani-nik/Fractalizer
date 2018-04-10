@@ -39,7 +39,7 @@ namespace Fractalizer.Core.Forms
             // 
             this.fractalImg.Location = new System.Drawing.Point(0, 0);
             this.fractalImg.Name = "fractalImg";
-            this.fractalImg.Size = new System.Drawing.Size(1363, 484);
+            this.fractalImg.Size = new System.Drawing.Size(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
             this.fractalImg.TabIndex = 0;
             this.fractalImg.TabStop = false;
             // 
@@ -50,9 +50,9 @@ namespace Fractalizer.Core.Forms
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.fractalImg);
-            this.Location = new System.Drawing.Point(0, 217);
+            this.Location = new System.Drawing.Point(100, 217);
             this.Name = "FractalPicturePanel";
-            this.Size = new System.Drawing.Size(1366, 484);
+            this.Size = new System.Drawing.Size(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
             ((System.ComponentModel.ISupportInitialize)(this.fractalImg)).EndInit();
             this.ResumeLayout(false);
 

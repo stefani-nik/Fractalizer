@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Fractalizer.Core.Contracts;
@@ -24,6 +25,9 @@ namespace Fractalizer.Core.Forms
             this.renderer = new Renderer();
             this.backgroundWorker = new BackgroundWorker();
             this.InitializeBackgroundWorker();
+            this.fractalImg.MouseDown += new MouseEventHandler(picBox_MouseDown);
+            this.fractalImg.MouseUp += new MouseEventHandler(picBox_MouseUp);
+            this.fractalImg.MouseMove += new MouseEventHandler(picBox_MouseMove);
 
         }
 

@@ -6,7 +6,7 @@ namespace Fractalizer.Core.Forms
 {
     public partial class SettingsPanel : MetroUserControl
     {
-        private FractalPicturePanel fractalPicturePanel;
+        private readonly FractalPicturePanel fractalPicturePanel;
 
         public SettingsPanel(FractalPicturePanel frPicPanel)
         {

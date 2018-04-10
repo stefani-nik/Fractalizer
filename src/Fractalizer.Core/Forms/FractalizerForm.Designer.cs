@@ -3,7 +3,7 @@ using Fractalizer.Common;
 
 namespace Fractalizer.Core.Forms
 {
-    partial class BaseForm
+    partial class FractalizerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Fractalizer.Core.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FractalizerForm));
             this.SuspendLayout();
             // 
             // BaseForm

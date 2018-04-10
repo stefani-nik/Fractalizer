@@ -19,9 +19,9 @@ namespace Fractalizer.Fractals
         {
 
             double xValue = this.XStartValue + this.xOffset * coordX;
-            double yValue = this.YStartValue + this.yOffset * coordY;
+            double yValue = this.YStartValue + this.yOffset*coordY;
 
-            ComplexPoint c = new ComplexPoint(1, 1);
+
             ComplexPoint z = new ComplexPoint(xValue, yValue);
             ComplexPoint z1 = new ComplexPoint(1,0);
             ComplexPoint dz = new ComplexPoint(1,0);

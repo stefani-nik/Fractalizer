@@ -59,43 +59,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRenderer.cs" />
-    <Compile Include="Forms\BaseForm.cs">
+    <Compile Include="Forms\FractalizerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <Compile Include="Forms\FractalizerForm.Designer.cs">
+      <DependentUpon>FractalizerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ColorsPanel.cs">
+    <Compile Include="Controls\ColorsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ColorsPanel.Designer.cs">
+    <Compile Include="Controls\ColorsPanel.Designer.cs">
       <DependentUpon>ColorsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FractalPicturePanel.cs">
+    <Compile Include="Controls\FractalPicturePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FractalPicturePanel.Designer.cs">
+    <Compile Include="Controls\FractalPicturePanel.Designer.cs">
       <DependentUpon>FractalPicturePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SettingsPanel.cs">
+    <Compile Include="Controls\SettingsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\SettingsPanel.Designer.cs">
+    <Compile Include="Controls\SettingsPanel.Designer.cs">
       <DependentUpon>SettingsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Renderer.cs" />
+    <Compile Include="Decorators\Renderer.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FractalizerForm.resx">
+      <DependentUpon>FractalizerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ColorsPanel.resx">
+    <EmbeddedResource Include="Controls\ColorsPanel.resx">
       <DependentUpon>ColorsPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FractalPicturePanel.resx">
+    <EmbeddedResource Include="Controls\FractalPicturePanel.resx">
       <DependentUpon>FractalPicturePanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SettingsPanel.resx">
+    <EmbeddedResource Include="Controls\SettingsPanel.resx">
       <DependentUpon>SettingsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -18,7 +18,7 @@ namespace Fractalizer.Core
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BaseForm());
+            Application.Run(new FractalizerForm());
         }
     }
 }

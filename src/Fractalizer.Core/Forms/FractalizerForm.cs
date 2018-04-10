@@ -7,7 +7,7 @@ using MetroFramework.Forms;
 
 namespace Fractalizer.Core.Forms
 {
-    public partial class BaseForm : MetroForm
+    public partial class FractalizerForm : MetroForm
     {
         #region Members
 
@@ -15,7 +15,7 @@ namespace Fractalizer.Core.Forms
 
         private SettingsPanel settingsPanel;
         private FractalPicturePanel fractalPicturePannel;
-        public BaseForm()
+        public FractalizerForm()
         {
             this.fractalPicturePannel = new FractalPicturePanel();
             this.settingsPanel = new SettingsPanel(this.fractalPicturePannel);

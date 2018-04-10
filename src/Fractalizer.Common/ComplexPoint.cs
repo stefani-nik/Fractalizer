@@ -52,6 +52,11 @@ namespace Fractalizer.Common
             return c;
         }
 
+        public double GetModulusSquared()
+        {
+            return (double)this.Re * this.Re + this.Im * this.Im;
+        }
+
         /// <summary>
         /// Calculates the addition of two complex numbers
         /// </summary>
@@ -71,10 +76,10 @@ namespace Fractalizer.Common
         {
             c1.Re = c1.Re - c2.Re;
             c1.Im = c1.Im - c2.Im;
-            return c2;
+            return c1;
         }
 
-        public static ComplexPoint operator *(ComplexPoint c, double f)
+        public static ComplexPoint operator *(double f, ComplexPoint c)
         {
             c.Re = (double)(c.Re * f);
             c.Im = (double)(c.Im * f);
@@ -84,7 +89,7 @@ namespace Fractalizer.Common
         public static ComplexPoint operator /(ComplexPoint c1, ComplexPoint c2)
         {
             double x = c1.Re, y = c1.Im;
-            double u = c1.Re, v = c1.Im;
+            double u = c2.Re, v = c2.Im;
             double denom = u * u + v * v;
 
             if (denom == 0)

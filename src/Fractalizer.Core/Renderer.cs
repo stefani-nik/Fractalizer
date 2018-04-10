@@ -69,7 +69,7 @@ namespace Fractalizer.Core
                 {
                     int index = ((y * width) + x) * bytesPerPixel;
 
-                    int iter = mandel.GetNextPixel(x, y, iterations);
+                    int iter = mandel.GetNextPixel(x, y, 32);
                     Color pixelColor = iter == iterations ? Color.White : palette[iter % palette.Count];
 
                     pixels[index + 0] = pixelColor.B;

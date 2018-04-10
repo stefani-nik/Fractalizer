@@ -18,16 +18,16 @@ namespace Fractalizer.Fractals
         private Newton() { }
 
 
-        public double XStartValue { get; private set; } = FractalsConstants.StartValueX;
+        public double XStartValue { get; private set; } = -4.0;//FractalsConstants.StartValueX;
 
-        public double YStartValue { get; private set; } = FractalsConstants.StartValueY;
+        public double YStartValue { get; private set; } = -2.0;//FractalsConstants.StartValueY;
 
-        public double XRange { get; private set; } = FractalsConstants.XRange;
+        public double XRange { get; private set; } = 8.0;//FractalsConstants.XRange;
 
-        public double YRange { get; private set; } = FractalsConstants.YRange;
+        public double YRange { get; private set; } = 8.0; //FractalsConstants.YRange;
 
-        private double xOffset = FractalsConstants.StartOffsetX;
-        private double yOffset = FractalsConstants.StartOffsetY;
+        private double xOffset = 0.01;//FractalsConstants.StartOffsetX;
+        private double yOffset = 0.01;//FractalsConstants.StartOffsetY;
 
         /// <summary>
         /// Calculates the next pixel with the equation Z(n+1) = Z(n)^2 + C
@@ -40,20 +40,28 @@ namespace Fractalizer.Fractals
 
             ComplexPoint c = new ComplexPoint(1, 1);
             ComplexPoint z = new ComplexPoint(xValue, yValue);
+            ComplexPoint z1 = new ComplexPoint(1,0);
+            ComplexPoint dz = new ComplexPoint(1,0);
 
             int it = 0;
-            do
+
+
+            if (xValue != 0 || yValue != 0)
             {
-                it++;
-                ComplexPoint z1 = ComplexPoint.Pow(z,3) - (double)1;
-                //z += c;
-                ComplexPoint dz = ComplexPoint.Pow(z, 2) * 3;
+                while (it < iterations && z1.GetModulusSquared() > 0.00000001)
+                {
+                    //if (z1.GetModulusSquared() < 0.0001) break;
 
-                z = z - (z1/dz)*1.0;
+                    z1 = ComplexPoint.Pow(z, 3) - (double)2;
+                    //z += c;
+                    dz = 3 * ComplexPoint.Pow(z, 2);
 
-                if (z.GetModulus() > FractalsConstants.RangeRadius) break;
-
-            } while (it < iterations);
+                    ComplexPoint temp = z1 / dz;
+                    z -= temp;
+                    it++;
+                }
+            }
+               
 
             return it;
         }
@@ -63,11 +71,11 @@ namespace Fractalizer.Fractals
         /// </summary>
         public void AdjustParameters(int zoomStartX, int zoomStartY, int zoomEndX, int zoomEndY)
         {
-            double startX = this.XRange * zoomStartX / 900; // TODO work with constants
-            double startY = this.YRange * zoomStartY / 900;
+            double startX = this.XRange * zoomStartX / 800; // TODO work with constants
+            double startY = this.YRange * zoomStartY / 800;
 
-            double endX = this.XRange * zoomEndX / 900;
-            double endY = this.YRange * zoomEndY / 900;
+            double endX = this.XRange * zoomEndX / 800;
+            double endY = this.YRange * zoomEndY / 800;
 
 
             this.XStartValue += startX;
@@ -76,8 +84,8 @@ namespace Fractalizer.Fractals
             this.XRange = endX - startX;
             this.YRange = endY - startY;
 
-            this.xOffset = (endX - startX) / (double)900;
-            this.yOffset = (endY - startY) / (double)900;
+            this.xOffset = (endX - startX) / (double)800;
+            this.yOffset = (endY - startY) / (double)800;
 
         }
 

@@ -13,7 +13,7 @@ namespace Fractalizer.Common
         public static readonly int SettingsPanelLocationX = 0;
         public static readonly int SettingsPanelLocationY = Screen.PrimaryScreen.WorkingArea.Height / 10;
 
-        public static readonly int PicturePanelWidth = 900;
+        public static readonly int PicturePanelWidth = 1000;
         public static readonly int PicturePanelHeight = 450;
 
         public static readonly int PicturePanelLocationX = 0;

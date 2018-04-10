@@ -50,7 +50,7 @@ namespace Fractalizer.Core.Forms
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.fractalImg);
-            this.Location = new System.Drawing.Point(100, 217);
+            this.Location = new System.Drawing.Point(150, 220);
             this.Name = "FractalPicturePanel";
             this.Size = new System.Drawing.Size(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
             ((System.ComponentModel.ISupportInitialize)(this.fractalImg)).EndInit();

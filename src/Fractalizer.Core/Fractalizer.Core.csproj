@@ -59,6 +59,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRenderer.cs" />
+    <Compile Include="Controls\JuliaSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JuliaSettingsPanel.Designer.cs">
+      <DependentUpon>JuliaSettingsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MandelbrotSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MandelbrotSettingsPanel.Designer.cs">
+      <DependentUpon>MandelbrotSettingsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewtonSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NewtonSettingsPanel.Designer.cs">
+      <DependentUpon>NewtonSettingsPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FractalizerForm.cs">
       <SubType>Form</SubType>
     </Compile>

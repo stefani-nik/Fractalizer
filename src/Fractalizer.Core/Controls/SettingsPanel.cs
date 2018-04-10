@@ -27,5 +27,9 @@ namespace Fractalizer.Core.Forms
             fractalPicturePanel.RenderFractal();
         }
 
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

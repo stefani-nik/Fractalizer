@@ -34,16 +34,18 @@ namespace Fractalizer.Core.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FractalizerForm));
             this.SuspendLayout();
             // 
-            // BaseForm
+            // FractalizerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1366, 728);
+            this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1366, 728);
-            this.MinimumSize = new System.Drawing.Size(1364, 726);
-            this.Name = "BaseForm";
-            this.Text = "Fractalizer";
+            this.MaximumSize = new System.Drawing.Size(1300, 700);
+            this.MinimumSize = new System.Drawing.Size(1300, 700);
+            this.Name = "FractalizerForm";
+            this.RightToLeftLayout = true;
+            this.Text = "Fractalizer - Stefani Nikolova";
             this.TransparencyKey = System.Drawing.Color.Empty;
             this.ResumeLayout(false);
 

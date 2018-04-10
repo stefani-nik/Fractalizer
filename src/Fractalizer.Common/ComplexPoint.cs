@@ -67,5 +67,36 @@ namespace Fractalizer.Common
             return c;
         }
 
+        public static ComplexPoint operator -(ComplexPoint c1, ComplexPoint c2)
+        {
+            c1.Re = c1.Re - c2.Re;
+            c1.Im = c1.Im - c2.Im;
+            return c2;
+        }
+
+        public static ComplexPoint operator *(ComplexPoint c, double f)
+        {
+            c.Re = (double)(c.Re * f);
+            c.Im = (double)(c.Im * f);
+            return c;
+        }
+
+        public static ComplexPoint operator /(ComplexPoint c1, ComplexPoint c2)
+        {
+            double x = c1.Re, y = c1.Im;
+            double u = c1.Re, v = c1.Im;
+            double denom = u * u + v * v;
+
+            if (denom == 0)
+            {
+                throw new DivideByZeroException();
+            }
+
+            c1.Re = (double)((x * u + y * v) / denom);
+            c1.Im = (double)((y * u - x * v) / denom);
+
+            return c1;
+        }
+
     }
 }

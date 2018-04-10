@@ -30,7 +30,7 @@ namespace Fractalizer.Core
         {
             this.palette = ColorsManager.LoadPalette();
             this.MyBitmap = new Bitmap(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
-            this.mandel = Julia.Instance;
+            this.mandel = Newton.Instance;
             // this.fractal = fractal;
             this.renderTimer = new Stopwatch();
         }

@@ -45,8 +45,11 @@ namespace Fractalizer.Fractals
             do
             {
                 it++;
-                z.Sqrt();
-                z += c;
+                ComplexPoint z1 = ComplexPoint.Pow(z,3) - (double)1;
+                //z += c;
+                ComplexPoint dz = ComplexPoint.Pow(z, 2) * 3;
+
+                z = z - (z1/dz)*1.0;
 
                 if (z.GetModulus() > FractalsConstants.RangeRadius) break;
 

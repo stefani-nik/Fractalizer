@@ -18,16 +18,16 @@ namespace Fractalizer.Fractals
         private Newton() { }
 
 
-        public double XStartValue { get; private set; } = -4.0;//FractalsConstants.StartValueX;
+        public double XStartValue { get; private set; } = FractalsConstants.StartValueX;
 
-        public double YStartValue { get; private set; } = -2.0;//FractalsConstants.StartValueY;
+        public double YStartValue { get; private set; } = FractalsConstants.StartValueY;
 
-        public double XRange { get; private set; } = 8.0;//FractalsConstants.XRange;
+        public double XRange { get; private set; } = FractalsConstants.XRange;
 
-        public double YRange { get; private set; } = 8.0; //FractalsConstants.YRange;
+        public double YRange { get; private set; } = FractalsConstants.YRange;
 
-        private double xOffset = 0.01;//FractalsConstants.StartOffsetX;
-        private double yOffset = 0.01;//FractalsConstants.StartOffsetY;
+        private double xOffset = FractalsConstants.StartOffsetX;
+        private double yOffset = FractalsConstants.StartOffsetY;
 
         /// <summary>
         /// Calculates the next pixel with the equation Z(n+1) = Z(n)^2 + C
@@ -79,11 +79,11 @@ namespace Fractalizer.Fractals
         /// </summary>
         public void AdjustParameters(int zoomStartX, int zoomStartY, int zoomEndX, int zoomEndY)
         {
-            double startX = this.XRange * zoomStartX / 800; // TODO work with constants
-            double startY = this.YRange * zoomStartY / 800;
+            double startX = this.XRange * zoomStartX / FormConstants.PicturePanelWidth; // TODO work with constants
+            double startY = this.YRange * zoomStartY / FormConstants.PicturePanelWidth;
 
-            double endX = this.XRange * zoomEndX / 800;
-            double endY = this.YRange * zoomEndY / 800;
+            double endX = this.XRange * zoomEndX / FormConstants.PicturePanelWidth;
+            double endY = this.YRange * zoomEndY / FormConstants.PicturePanelWidth;
 
 
             this.XStartValue += startX;
@@ -92,8 +92,8 @@ namespace Fractalizer.Fractals
             this.XRange = endX - startX;
             this.YRange = endY - startY;
 
-            this.xOffset = (endX - startX) / (double)800;
-            this.yOffset = (endY - startY) / (double)800;
+            this.xOffset = (endX - startX) / (double)FormConstants.PicturePanelWidth;
+            this.yOffset = (endY - startY) / (double)FormConstants.PicturePanelWidth;
 
         }
 

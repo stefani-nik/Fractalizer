@@ -117,7 +117,7 @@ namespace Fractalizer.Core.Forms
                 this.zoomEnd = new Point((int)(zoomStart.X + zoomWidth), (int)(zoomStart.Y + zoomHeight));
 
                 this.zoomRectangle.Width = (int)zoomWidth;
-                this.zoomRectangle.Height = (int)zoomHeight;
+                this.zoomRectangle.Height = (int)zoomHeight / 2;
 
                 ControlPaint.DrawReversibleFrame(zoomRectangle, this.BackColor, FrameStyle.Dashed);
             }

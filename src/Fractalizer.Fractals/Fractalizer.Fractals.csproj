@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IFractal.cs" />
+    <Compile Include="Julia.cs" />
     <Compile Include="Mandelbrot.cs" />
+    <Compile Include="Newton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

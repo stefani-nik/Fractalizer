@@ -28,9 +28,9 @@ namespace Fractalizer.Core
 
         public Renderer() // add to constructor
         {
-            //this.palette = ColorsManager.LoadPalette();
+            this.palette = ColorsManager.LoadPalette();
             this.MyBitmap = new Bitmap(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
-            this.mandel = Mandelbrot.Instance;
+            this.mandel = Julia.Instance;
             // this.fractal = fractal;
             this.renderTimer = new Stopwatch();
         }
@@ -70,7 +70,7 @@ namespace Fractalizer.Core
                     int index = ((y * width) + x) * bytesPerPixel;
 
                     int iter = mandel.GetNextPixel(x, y, iterations);
-                    Color pixelColor = iter == iterations ? Color.White : Color.Black;  //palette[iter % palette.Count];
+                    Color pixelColor = iter == iterations ? Color.White : palette[iter % palette.Count];
 
                     pixels[index + 0] = pixelColor.B;
                     pixels[index + 1] = pixelColor.G;

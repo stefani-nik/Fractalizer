@@ -7,15 +7,15 @@ namespace Fractalizer.Fractals
     /// <summary>
     /// The actual Mandelbrot set class
     /// </summary>
-    public sealed class Mandelbrot : IFractal
+    public sealed class Newton : IFractal
     {
 
-        private static readonly Lazy<Mandelbrot> instance = 
-                                new Lazy<Mandelbrot>(() => new Mandelbrot());
+        private static readonly Lazy<Newton> instance =
+                                new Lazy<Newton>(() => new Newton());
 
-        public static Mandelbrot Instance => instance.Value;
+        public static Newton Instance => instance.Value;
 
-        private Mandelbrot() { }
+        private Newton() { }
 
 
         public double XStartValue { get; private set; } = FractalsConstants.StartValueX;
@@ -38,8 +38,8 @@ namespace Fractalizer.Fractals
             double xValue = this.XStartValue + this.xOffset * coordX;
             double yValue = this.YStartValue + this.yOffset * coordY;
 
-            ComplexPoint c = new ComplexPoint(xValue, yValue);
-            ComplexPoint z = new ComplexPoint(0, 0);
+            ComplexPoint c = new ComplexPoint(1, 1);
+            ComplexPoint z = new ComplexPoint(xValue, yValue);
 
             int it = 0;
             do
@@ -60,7 +60,7 @@ namespace Fractalizer.Fractals
         /// </summary>
         public void AdjustParameters(int zoomStartX, int zoomStartY, int zoomEndX, int zoomEndY)
         {
-            double startX = this.XRange * zoomStartX/ 900; // TODO work with constants
+            double startX = this.XRange * zoomStartX / 900; // TODO work with constants
             double startY = this.YRange * zoomStartY / 900;
 
             double endX = this.XRange * zoomEndX / 900;

@@ -4,5 +4,6 @@
     {
         double GetModulus();
         void Sqrt();
+        double GetModulusSquared();
     }
 }

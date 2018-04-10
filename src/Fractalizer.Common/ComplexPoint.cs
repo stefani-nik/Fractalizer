@@ -38,7 +38,7 @@ namespace Fractalizer.Common
             this.Re = temp;
         }
 
-        public static ComplexPoint Pow(ComplexPoint c, double exponent)
+        public ComplexPoint Pow(ComplexPoint c, double exponent)
         {
             double x = c.Re;
             double y = c.Im;

@@ -23,7 +23,7 @@ namespace Fractalizer.Core
         public Bitmap MyBitmap;
 
         private readonly List<Color> palette;
-        private readonly IFractal mandel;
+        private readonly Fractal mandel;
         private readonly Stopwatch renderTimer;
 
         public Renderer() // add to constructor

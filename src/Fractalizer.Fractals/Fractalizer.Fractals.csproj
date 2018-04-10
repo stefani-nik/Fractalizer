@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IFractal.cs" />
+    <Compile Include="Contracts\Fractal.cs" />
     <Compile Include="Julia.cs" />
     <Compile Include="Mandelbrot.cs" />
     <Compile Include="Newton.cs" />

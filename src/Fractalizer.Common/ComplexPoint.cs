@@ -65,6 +65,12 @@ namespace Fractalizer.Common
             return new ComplexPoint(c1.Re + c2.Re, c1.Im + c2.Im);
         }
 
+        public static ComplexPoint operator +(ComplexPoint c, double f)
+        {
+            c.Re = (double)(c.Re + f);
+            return c;
+        }
+
 
         public static ComplexPoint operator -(ComplexPoint c, double f)
         {

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using MetroFramework.Controls;
 
@@ -24,8 +26,10 @@ namespace Fractalizer.Core.Controls
                               .Split(' ')[0]
                               .Trim();
             Color baseColor = this.colorsPanel1.GetBaseColor();
+            HideSettingsPanels();
+            ShowSettingsPanel(selected);
             fractalPicturePanel.RenderFractal(selected,baseColor);
-            mandelbrotSettingsPanel1.Show();
+
         }
 
         //TODO: FIX
@@ -47,9 +51,25 @@ namespace Fractalizer.Core.Controls
             e.ToolTipSize = TextRenderer.MeasureText(iterationsTrackBar.Value.ToString(), new Font("Arial", 16.0f));
         }
 
-        private void SettingsPanel_Load(object sender, EventArgs e)
+
+        private void ShowSettingsPanel(string fractal)
         {
-            this.mandelbrotSettingsPanel1.Hide();
+
+            string fieldName = fractal.ToLower() + "SettingsPanel";
+            var field = this.GetType().GetField(fieldName, BindingFlags.DeclaredOnly |
+                                                  BindingFlags.Instance |
+                                                  BindingFlags.NonPublic).GetValue(this);
+            
+            MethodInfo showMethod = field.GetType().GetMethod("Show");
+            showMethod.Invoke(field, null);
+            
+        }
+
+        private void HideSettingsPanels()
+        {
+            this.mandelbrotSettingsPanel.Hide();
+            this.juliaSettingsPanel.Hide();
+            this.newtonSettingsPanel.Hide();
         }
     }
 }

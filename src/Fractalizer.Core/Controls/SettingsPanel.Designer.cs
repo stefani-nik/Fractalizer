@@ -38,7 +38,12 @@ namespace Fractalizer.Core.Controls
             this.lblFractalCombo = new MetroFramework.Controls.MetroLabel();
             this.lblIterations = new MetroFramework.Controls.MetroLabel();
             this.iterationsToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.mandelbrotSettingsPanel1 = new Fractalizer.Core.Controls.MandelbrotSettingsPanel();
+            this.mandelbrotSettingsPanel = new MandelbrotSettingsPanel();
+            mandelbrotSettingsPanel.Hide();
+            this.juliaSettingsPanel = new JuliaSettingsPanel();
+            juliaSettingsPanel.Hide();
+            this.newtonSettingsPanel = new NewtonSettingsPanel();
+            newtonSettingsPanel.Hide();
             this.colorsPanel1 = new Fractalizer.Core.Controls.ColorsPanel();
             this.SuspendLayout();
             // 
@@ -113,13 +118,13 @@ namespace Fractalizer.Core.Controls
             this.iterationsToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.iterationsToolTip_Draw);
             this.iterationsToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.iterationsToolTip_Popup);
             // 
-            // mandelbrotSettingsPanel1
+            // mandelbrotSettingsPanel
             // 
-            this.mandelbrotSettingsPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.mandelbrotSettingsPanel1.Location = new System.Drawing.Point(43, 80);
-            this.mandelbrotSettingsPanel1.Name = "mandelbrotSettingsPanel1";
-            this.mandelbrotSettingsPanel1.Size = new System.Drawing.Size(820, 30);
-            this.mandelbrotSettingsPanel1.TabIndex = 12;
+            this.mandelbrotSettingsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.mandelbrotSettingsPanel.Location = new System.Drawing.Point(43, 80);
+            this.mandelbrotSettingsPanel.Name = "mandelbrotSettingsPanel";
+            this.mandelbrotSettingsPanel.Size = new System.Drawing.Size(820, 30);
+            this.mandelbrotSettingsPanel.TabIndex = 12;
             // 
             // colorsPanel1
             // 
@@ -135,7 +140,7 @@ namespace Fractalizer.Core.Controls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.Controls.Add(this.mandelbrotSettingsPanel1);
+            this.Controls.Add(this.mandelbrotSettingsPanel);
             this.Controls.Add(this.lblIterations);
             this.Controls.Add(this.lblFractalCombo);
             this.Controls.Add(this.colorsPanel1);
@@ -145,7 +150,6 @@ namespace Fractalizer.Core.Controls
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "SettingsPanel";
             this.Size = new System.Drawing.Size(1248, 126);
-            this.Load += new System.EventHandler(this.SettingsPanel_Load);
             this.ResumeLayout(false);
 
         }
@@ -158,6 +162,8 @@ namespace Fractalizer.Core.Controls
         private MetroFramework.Controls.MetroLabel lblFractalCombo;
         private MetroFramework.Controls.MetroLabel lblIterations;
         private System.Windows.Forms.ToolTip iterationsToolTip;
-        private MandelbrotSettingsPanel mandelbrotSettingsPanel1;
+        private MandelbrotSettingsPanel mandelbrotSettingsPanel;
+        private JuliaSettingsPanel juliaSettingsPanel;
+        private NewtonSettingsPanel newtonSettingsPanel;
     }
 }

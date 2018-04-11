@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 
 namespace Fractalizer.Common
 {
@@ -13,7 +12,7 @@ namespace Fractalizer.Common
         {
             palette = new List<Color>();
 
-            for (float i = 0.0f; i <= 1.0f; i += 0.05f)
+            for (float i = 0.15f; i <= 1.0f; i += 0.025f)
             {
                 Color shade = Color.FromArgb(baseColor.A,
                 (int)(baseColor.R * i), (int)(baseColor.G * i), (int)(baseColor.B * i));

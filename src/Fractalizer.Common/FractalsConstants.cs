@@ -17,7 +17,7 @@
         public const int DefaultIterations = 128;
         public const int MaxIterations = 5000;
         public const double RangeRadius = 2.0;
-        public const int ColorsInterval = 40;
+        public const int ColorsInterval = 100;
 
     }
 }

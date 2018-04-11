@@ -30,12 +30,14 @@ namespace Fractalizer.Core.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsPanel));
             this.fractalComboBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
+            this.iterationsTrackBar = new MetroFramework.Controls.MetroTrackBar();
             this.btnRender = new MetroFramework.Controls.MetroButton();
             this.lblFractalCombo = new MetroFramework.Controls.MetroLabel();
-            this.lblIteration = new MetroFramework.Controls.MetroLabel();
+            this.lblIterations = new MetroFramework.Controls.MetroLabel();
+            this.iterationsToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.colorsPanel1 = new Fractalizer.Core.Controls.ColorsPanel();
             this.SuspendLayout();
             // 
@@ -54,16 +56,18 @@ namespace Fractalizer.Core.Controls
             this.fractalComboBox.TabIndex = 6;
             this.fractalComboBox.Tag = "";
             this.fractalComboBox.UseSelectable = true;
-            this.fractalComboBox.SelectedIndex = 0;
             // 
-            // metroTrackBar1
+            // iterationsTrackBar
             // 
-            this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
-            this.metroTrackBar1.Location = new System.Drawing.Point(581, 3);
-            this.metroTrackBar1.Name = "metroTrackBar1";
-            this.metroTrackBar1.Size = new System.Drawing.Size(198, 23);
-            this.metroTrackBar1.TabIndex = 7;
-            this.metroTrackBar1.Text = "metroTrackBar1";
+            this.iterationsTrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.iterationsTrackBar.Location = new System.Drawing.Point(581, 3);
+            this.iterationsTrackBar.Maximum = 500;
+            this.iterationsTrackBar.Name = "iterationsTrackBar";
+            this.iterationsTrackBar.Size = new System.Drawing.Size(198, 23);
+            this.iterationsTrackBar.TabIndex = 7;
+            this.iterationsTrackBar.Text = "iterationsTrackBar";
+            this.iterationsTrackBar.Value = 128;
+            this.iterationsTrackBar.ValueChanged += new System.EventHandler(this.iterationsTrackBar_ValueChanged);
             // 
             // btnRender
             // 
@@ -87,20 +91,31 @@ namespace Fractalizer.Core.Controls
             this.lblFractalCombo.TabIndex = 10;
             this.lblFractalCombo.Text = "Choose fractal";
             // 
-            // lblIteration
+            // lblIterations
             // 
-            this.lblIteration.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblIteration.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblIteration.Location = new System.Drawing.Point(371, 0);
-            this.lblIteration.Name = "lblIteration";
-            this.lblIteration.Size = new System.Drawing.Size(194, 29);
-            this.lblIteration.TabIndex = 11;
-            this.lblIteration.Text = "Number of iterations";
+            this.lblIterations.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblIterations.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblIterations.Location = new System.Drawing.Point(371, 0);
+            this.lblIterations.Name = "lblIterations";
+            this.lblIterations.Size = new System.Drawing.Size(194, 29);
+            this.lblIterations.TabIndex = 11;
+            this.lblIterations.Text = "Number of iterations";
+            // 
+            // iterationsToolTip
+            // 
+            this.iterationsToolTip.AutomaticDelay = 1000;
+            this.iterationsToolTip.BackColor = System.Drawing.SystemColors.GrayText;
+            this.iterationsToolTip.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.iterationsToolTip.OwnerDraw = true;
+            this.iterationsToolTip.UseAnimation = false;
+            this.iterationsToolTip.UseFading = false;
+            this.iterationsToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.iterationsToolTip_Draw);
+            this.iterationsToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.iterationsToolTip_Popup);
             // 
             // colorsPanel1
             // 
             this.colorsPanel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.colorsPanel1.Location = new System.Drawing.Point(819, 0);
+            this.colorsPanel1.Location = new System.Drawing.Point(858, 0);
             this.colorsPanel1.Name = "colorsPanel1";
             this.colorsPanel1.Size = new System.Drawing.Size(157, 39);
             this.colorsPanel1.TabIndex = 9;
@@ -111,11 +126,11 @@ namespace Fractalizer.Core.Controls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.Controls.Add(this.lblIteration);
+            this.Controls.Add(this.lblIterations);
             this.Controls.Add(this.lblFractalCombo);
             this.Controls.Add(this.colorsPanel1);
             this.Controls.Add(this.btnRender);
-            this.Controls.Add(this.metroTrackBar1);
+            this.Controls.Add(this.iterationsTrackBar);
             this.Controls.Add(this.fractalComboBox);
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "SettingsPanel";
@@ -125,11 +140,12 @@ namespace Fractalizer.Core.Controls
         }
 
         #endregion
-        private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
+        private MetroFramework.Controls.MetroTrackBar iterationsTrackBar;
         private MetroFramework.Controls.MetroButton btnRender;
         private ColorsPanel colorsPanel1;
         private MetroFramework.Controls.MetroComboBox fractalComboBox;
         private MetroFramework.Controls.MetroLabel lblFractalCombo;
-        private MetroFramework.Controls.MetroLabel lblIteration;
+        private MetroFramework.Controls.MetroLabel lblIterations;
+        private System.Windows.Forms.ToolTip iterationsToolTip;
     }
 }

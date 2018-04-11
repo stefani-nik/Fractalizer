@@ -3,18 +3,27 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 using MetroFramework.Controls;
+using System.Collections.Generic;
 
 namespace Fractalizer.Core.Controls
 {
     public partial class SettingsPanel : MetroUserControl
     {
         private readonly FractalPicturePanel fractalPicturePanel;
+        private readonly Dictionary<string, UserControl> settingsPanels;
 
         public SettingsPanel(FractalPicturePanel frPicPanel)
         {
             fractalPicturePanel = frPicPanel;
             InitializeComponent();
             this.btnRender.Click += new EventHandler(btnRender_Click);
+
+            this.HideSettingsPanels();
+            this.settingsPanels = new Dictionary<string, UserControl>
+            {
+                { "Julia" , this.juliaSettingsPanel },
+                { "Newton", this.newtonSettingsPanel1 }
+            };
         }
 
         private void SettingsPanel_Load(object sender, EventArgs e)
@@ -29,8 +38,8 @@ namespace Fractalizer.Core.Controls
                               .Split(' ')[0]
                               .Trim();
             Color baseColor = this.colorsPanel1.GetBaseColor();
-            HideSettingsPanels();
-            ShowSettingsPanel(selected);
+            //HideSettingsPanels();
+           // ShowSettingsPanel(selected);
             fractalPicturePanel.RenderFractal(selected,baseColor);
 
         }
@@ -58,13 +67,18 @@ namespace Fractalizer.Core.Controls
         private void ShowSettingsPanel(string fractal)
         {
 
-            string fieldName = fractal.ToLower() + "SettingsPanel";
-            var field = this.GetType().GetField(fieldName, BindingFlags.DeclaredOnly |
-                                                  BindingFlags.Instance |
-                                                  BindingFlags.NonPublic).GetValue(this);
+            if(settingsPanels.ContainsKey(fractal))
+            {
+                settingsPanels[fractal].Show();
+            }
+
+            //string fieldName = fractal.ToLower() + "SettingsPanel";
+            //var field = this.GetType().GetField(fieldName, BindingFlags.DeclaredOnly |
+            //                                      BindingFlags.Instance |
+            //                                      BindingFlags.NonPublic).GetValue(this);
             
-            MethodInfo showMethod = field.GetType().GetMethod("Show");
-            showMethod.Invoke(field, null);
+            //MethodInfo showMethod = field.GetType().GetMethod("Show");
+            //showMethod.Invoke(field, null);
             
         }
 
@@ -72,8 +86,17 @@ namespace Fractalizer.Core.Controls
         {
            // this.mandelbrotSettingsPanel.Hide();
             this.juliaSettingsPanel.Hide();
-            //this.newtonSettingsPanel.Hide();
+            this.newtonSettingsPanel1.Hide();
         }
 
+        private void fractalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.HideSettingsPanels();
+            string selected = this.fractalComboBox.SelectedItem
+                              .ToString()
+                              .Split(' ')[0]
+                              .Trim();
+            this.ShowSettingsPanel(selected);
+        }
     }
 }

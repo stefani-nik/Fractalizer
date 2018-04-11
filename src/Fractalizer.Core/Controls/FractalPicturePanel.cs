@@ -74,7 +74,6 @@ namespace Fractalizer.Core.Controls
         // TODO
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-
             this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, 128,baseColor);
         }
 

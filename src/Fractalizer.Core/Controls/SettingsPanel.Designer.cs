@@ -66,6 +66,7 @@ namespace Fractalizer.Core.Controls
             this.fractalComboBox.TabIndex = 6;
             this.fractalComboBox.Tag = "";
             this.fractalComboBox.UseSelectable = true;
+            this.fractalComboBox.SelectedIndexChanged += new System.EventHandler(this.fractalComboBox_SelectedIndexChanged);
             // 
             // iterationsTrackBar
             // 

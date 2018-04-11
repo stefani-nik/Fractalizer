@@ -20,7 +20,7 @@ namespace Fractalizer.Core.Controls
         private bool isZooming = false;
         private bool isFractalRendered = false;
 
-        private IRenderer renderer;
+        private IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
 
         public FractalPicturePanel()
@@ -46,7 +46,7 @@ namespace Fractalizer.Core.Controls
                     .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
                     .GetValue(null);
 
-                this.renderer = new Renderer(instance);
+                renderer.Fractal = instance;
             }
 
             if (!this.backgroundWorker.IsBusy && renderer != null)

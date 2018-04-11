@@ -19,19 +19,34 @@ namespace Fractalizer.Core.Decorators
     public class Renderer : IRenderer
     {
 
+        private readonly List<Color> palette;
+        private readonly Stopwatch renderTimer;
+        private Fractal fractal;
+
+        private static readonly Lazy<Renderer> instance =
+                               new Lazy<Renderer>(() => new Renderer());
+
+        public static Renderer Instance => instance.Value;
+        
+        public Fractal Fractal
+        {
+            set
+            {
+                if (value != null)
+                    this.fractal = value;
+            }
+        }
+
         public Bitmap MyBitmap;
 
-        private readonly List<Color> palette;
-        private readonly Fractal fractal;
-        private readonly Stopwatch renderTimer;
 
-        public Renderer(Fractal frac) // add to constructor
+        private Renderer()
         {
             this.palette = ColorsManager.LoadPalette();
             this.MyBitmap = new Bitmap(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
-            this.fractal = frac;
             this.renderTimer = new Stopwatch();
         }
+
 
         /// <summary>
         /// Multithreading rendering of the chosen fractal

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Data;
 using MetroFramework.Controls;
 
-namespace Fractalizer.Core.Forms
+namespace Fractalizer.Core.Controls
 {
     public partial class SettingsPanel : MetroUserControl
     {
@@ -24,7 +23,12 @@ namespace Fractalizer.Core.Forms
 
         private void metroButton1_Click(object sender, System.EventArgs e)
         {
-            fractalPicturePanel.RenderFractal();
+            string selected = this.fractalComboBox.SelectedItem
+                                .ToString()
+                                .Split(' ')[0]
+                                .Trim();
+
+            fractalPicturePanel.RenderFractal(selected);
         }
 
         private void metroLabel1_Click(object sender, EventArgs e)

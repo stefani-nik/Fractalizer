@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Fractalizer.Common;
 using Fractalizer.Core.Contracts;
+using Fractalizer.Core.Controls;
 using MetroFramework.Forms;
 
 namespace Fractalizer.Core.Forms

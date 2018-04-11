@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Fractalizer.Common;
 
-namespace Fractalizer.Core.Forms
+namespace Fractalizer.Core.Controls
 {
     partial class FractalPicturePanel
     {

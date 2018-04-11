@@ -1,6 +1,6 @@
-﻿using Fractalizer.Common;
+﻿using Fractalizer.Core.Forms;
 
-namespace Fractalizer.Core.Forms
+namespace Fractalizer.Core.Controls
 {
     partial class SettingsPanel
     {
@@ -34,7 +34,7 @@ namespace Fractalizer.Core.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsPanel));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sETTINGSPANELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.fractalComboBox = new MetroFramework.Controls.MetroComboBox();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.btnRender = new MetroFramework.Controls.MetroButton();
             this.lblFractalCombo = new MetroFramework.Controls.MetroLabel();
@@ -48,29 +48,30 @@ namespace Fractalizer.Core.Forms
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sETTINGSPANELToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 26);
             // 
             // sETTINGSPANELToolStripMenuItem
             // 
             this.sETTINGSPANELToolStripMenuItem.Name = "sETTINGSPANELToolStripMenuItem";
-            this.sETTINGSPANELToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.sETTINGSPANELToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.sETTINGSPANELToolStripMenuItem.Text = "SETTINGS PANEL";
             // 
-            // metroComboBox1
+            // fractalComboBox
             // 
-            this.metroComboBox1.DisplayMember = "Mandelbrot";
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Items.AddRange(new object[] {
+            this.fractalComboBox.DisplayMember = "Mandelbrot";
+            this.fractalComboBox.FormattingEnabled = true;
+            this.fractalComboBox.ItemHeight = 23;
+            this.fractalComboBox.Items.AddRange(new object[] {
             "Mandelbrot Set",
             "Julia Set",
             "Newton Set"});
-            this.metroComboBox1.Location = new System.Drawing.Point(165, 0);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(160, 29);
-            this.metroComboBox1.TabIndex = 6;
-            this.metroComboBox1.Tag = "";
-            this.metroComboBox1.UseSelectable = true;
+            this.fractalComboBox.Location = new System.Drawing.Point(165, 0);
+            this.fractalComboBox.Name = "fractalComboBox";
+            this.fractalComboBox.Size = new System.Drawing.Size(160, 29);
+            this.fractalComboBox.TabIndex = 6;
+            this.fractalComboBox.Tag = "";
+            this.fractalComboBox.UseSelectable = true;
+            this.fractalComboBox.SelectedIndex = 0;
             // 
             // metroTrackBar1
             // 
@@ -132,7 +133,7 @@ namespace Fractalizer.Core.Forms
             this.Controls.Add(this.colorsPanel1);
             this.Controls.Add(this.btnRender);
             this.Controls.Add(this.metroTrackBar1);
-            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.fractalComboBox);
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "SettingsPanel";
             this.Size = new System.Drawing.Size(1248, 66);
@@ -148,7 +149,7 @@ namespace Fractalizer.Core.Forms
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
         private MetroFramework.Controls.MetroButton btnRender;
         private ColorsPanel colorsPanel1;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox fractalComboBox;
         private MetroFramework.Controls.MetroLabel lblFractalCombo;
         private MetroFramework.Controls.MetroLabel lblIteration;
     }

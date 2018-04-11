@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using Fractalizer.Core.Contracts;
+using Fractalizer.Core.Decorators;
+using Fractalizer.Fractals;
+using Fractalizer.Fractals.Contracts;
 using MetroFramework.Controls;
 
-namespace Fractalizer.Core.Forms
+namespace Fractalizer.Core.Controls
 {
     public partial class FractalPicturePanel : MetroUserControl
     {
@@ -16,13 +20,12 @@ namespace Fractalizer.Core.Forms
         private bool isZooming = false;
         private bool isFractalRendered = false;
 
-        private readonly IRenderer renderer;
+        private IRenderer renderer;
         private readonly BackgroundWorker backgroundWorker;
 
         public FractalPicturePanel()
         {
             InitializeComponent();
-            this.renderer = new Renderer();
             this.backgroundWorker = new BackgroundWorker();
             this.InitializeBackgroundWorker();
             this.fractalImg.MouseDown += new MouseEventHandler(picBox_MouseDown);
@@ -32,9 +35,21 @@ namespace Fractalizer.Core.Forms
         }
 
 
-        public void RenderFractal()
+        public void RenderFractal(string fractalName)
         {
-            if (!this.backgroundWorker.IsBusy)
+            var assembly = AppDomain.CurrentDomain.Load("Fractalizer.Fractals");
+            var fractalType = assembly.GetType("Fractalizer.Fractals." + fractalName);
+
+            if (fractalType != null)
+            {
+                var instance = (Fractal)fractalType
+                    .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
+                    .GetValue(null);
+
+                this.renderer = new Renderer(instance);
+            }
+
+            if (!this.backgroundWorker.IsBusy && renderer != null)
             {
                 backgroundWorker.RunWorkerAsync();
             }
@@ -57,7 +72,7 @@ namespace Fractalizer.Core.Forms
         // TODO
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.fractalImg.Image = renderer.RenderMandelbrot(zoomStart, zoomEnd,128);
+            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, 128);
         }
 
         private void backgroundWorker_RunWorkerCompleted(

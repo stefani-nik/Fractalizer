@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using MetroFramework.Controls;
 
 namespace Fractalizer.Core.Controls
@@ -11,29 +12,18 @@ namespace Fractalizer.Core.Controls
         {
             fractalPicturePanel = frPicPanel;
             InitializeComponent();
-            this.btnRender.Click += new EventHandler(metroButton1_Click);
+            this.btnRender.Click += new EventHandler(btnRender_Click);
         }
 
 
-
-        private void SettingsPanel_Load(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void metroButton1_Click(object sender, System.EventArgs e)
+        private void btnRender_Click(object sender, EventArgs e)
         {
             string selected = this.fractalComboBox.SelectedItem
-                                .ToString()
-                                .Split(' ')[0]
-                                .Trim();
-
-            fractalPicturePanel.RenderFractal(selected);
-        }
-
-        private void metroLabel1_Click(object sender, EventArgs e)
-        {
-
+                              .ToString()
+                              .Split(' ')[0]
+                              .Trim();
+            Color baseColor = this.colorsPanel1.GetBaseColor();
+            fractalPicturePanel.RenderFractal(selected,baseColor);
         }
     }
 }

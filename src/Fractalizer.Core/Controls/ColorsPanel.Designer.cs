@@ -1,4 +1,6 @@
-﻿namespace Fractalizer.Core.Forms
+﻿using System.Drawing;
+
+namespace Fractalizer.Core.Controls
 {
     partial class ColorsPanel
     {
@@ -28,28 +30,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.btnColor = new System.Windows.Forms.Button();
             this.btnShowColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // colorDialog1
+            // colorDialog
             // 
-            this.colorDialog1.FullOpen = true;
+            this.colorDialog.Color = System.Drawing.Color.Red;
+            this.colorDialog.FullOpen = true;
             // 
-            // button1
+            // btnColor
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Color";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnColor.BackColor = System.Drawing.Color.White;
+            this.btnColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColor.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnColor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnColor.Location = new System.Drawing.Point(3, 3);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(98, 29);
+            this.btnColor.TabIndex = 0;
+            this.btnColor.Text = "Color";
+            this.btnColor.UseVisualStyleBackColor = false;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // btnShowColor
             // 
@@ -67,7 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.Controls.Add(this.btnShowColor);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnColor);
             this.Name = "ColorsPanel";
             this.Size = new System.Drawing.Size(155, 36);
             this.ResumeLayout(false);
@@ -76,8 +79,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.Button btnShowColor;
     }
 }

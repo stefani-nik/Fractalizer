@@ -30,31 +30,14 @@ namespace Fractalizer.Core.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsPanel));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.sETTINGSPANELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fractalComboBox = new MetroFramework.Controls.MetroComboBox();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.btnRender = new MetroFramework.Controls.MetroButton();
             this.lblFractalCombo = new MetroFramework.Controls.MetroLabel();
             this.lblIteration = new MetroFramework.Controls.MetroLabel();
-            this.colorsPanel1 = new Fractalizer.Core.Forms.ColorsPanel();
-            this.contextMenuStrip1.SuspendLayout();
+            this.colorsPanel1 = new Fractalizer.Core.Controls.ColorsPanel();
             this.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sETTINGSPANELToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 26);
-            // 
-            // sETTINGSPANELToolStripMenuItem
-            // 
-            this.sETTINGSPANELToolStripMenuItem.Name = "sETTINGSPANELToolStripMenuItem";
-            this.sETTINGSPANELToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.sETTINGSPANELToolStripMenuItem.Text = "SETTINGS PANEL";
             // 
             // fractalComboBox
             // 
@@ -92,6 +75,7 @@ namespace Fractalizer.Core.Controls
             this.btnRender.TabIndex = 8;
             this.btnRender.Tag = "";
             this.btnRender.UseSelectable = true;
+            this.btnRender.Click += new System.EventHandler(this.btnRender_Click);
             // 
             // lblFractalCombo
             // 
@@ -102,7 +86,6 @@ namespace Fractalizer.Core.Controls
             this.lblFractalCombo.Size = new System.Drawing.Size(140, 29);
             this.lblFractalCombo.TabIndex = 10;
             this.lblFractalCombo.Text = "Choose fractal";
-            this.lblFractalCombo.Click += new System.EventHandler(this.metroLabel1_Click);
             // 
             // lblIteration
             // 
@@ -137,15 +120,11 @@ namespace Fractalizer.Core.Controls
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "SettingsPanel";
             this.Size = new System.Drawing.Size(1248, 66);
-            this.Load += new System.EventHandler(this.SettingsPanel_Load);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem sETTINGSPANELToolStripMenuItem;
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
         private MetroFramework.Controls.MetroButton btnRender;
         private ColorsPanel colorsPanel1;

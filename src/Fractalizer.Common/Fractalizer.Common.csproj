@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorsManager.cs" />
+    <Compile Include="ColorUtility.cs" />
     <Compile Include="ComplexPoint.cs" />
     <Compile Include="Contracts\IComplexPoint.cs" />
     <Compile Include="FormConstants.cs" />

@@ -19,7 +19,7 @@ namespace Fractalizer.Core.Decorators
     public class Renderer : IRenderer
     {
 
-        private readonly List<Color> palette;
+        private List<Color> palette;
         private readonly Stopwatch renderTimer;
         private Fractal fractal;
 
@@ -42,7 +42,7 @@ namespace Fractalizer.Core.Decorators
 
         private Renderer()
         {
-            this.palette = ColorsManager.LoadPalette();
+            //this.palette = ColorsManager.LoadPalette();
             this.MyBitmap = new Bitmap(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
             this.renderTimer = new Stopwatch();
         }
@@ -51,9 +51,10 @@ namespace Fractalizer.Core.Decorators
         /// <summary>
         /// Multithreading rendering of the chosen fractal
         /// </summary>
-        public Bitmap RenderFractal(Point start, Point end, int iterations)
+        public Bitmap RenderFractal(Point start, Point end, int iterations, Color baseColor)
         {
             this.renderTimer.Start();
+            this.palette = ColorUtility.LoadPalette(baseColor);
 
             // If the points are not empty the fractal is zoom and adjustment of the parameters is needed
             if (start != Point.Empty && end != Point.Empty)

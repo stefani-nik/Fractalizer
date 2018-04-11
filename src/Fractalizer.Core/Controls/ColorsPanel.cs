@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 using MetroFramework.Controls;
 
-namespace Fractalizer.Core.Forms
+namespace Fractalizer.Core.Controls
 {
     public partial class ColorsPanel : MetroUserControl
     {
@@ -10,9 +12,17 @@ namespace Fractalizer.Core.Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnColor_Click(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                btnShowColor.BackColor = colorDialog.Color;
+            }
+        }
+
+        public Color GetBaseColor()
+        {
+            return this.colorDialog.Color;
         }
     }
 }

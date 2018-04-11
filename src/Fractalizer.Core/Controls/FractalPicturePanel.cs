@@ -19,6 +19,7 @@ namespace Fractalizer.Core.Controls
         private Rectangle zoomRectangle;
         private bool isZooming = false;
         private bool isFractalRendered = false;
+        private Color baseColor = Color.Black;
 
         private IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
@@ -35,7 +36,7 @@ namespace Fractalizer.Core.Controls
         }
 
 
-        public void RenderFractal(string fractalName)
+        public void RenderFractal(string fractalName, Color color)
         {
             var assembly = AppDomain.CurrentDomain.Load("Fractalizer.Fractals");
             var fractalType = assembly.GetType("Fractalizer.Fractals." + fractalName);
@@ -49,6 +50,7 @@ namespace Fractalizer.Core.Controls
                 renderer.Fractal = instance;
             }
 
+            this.baseColor = color;
             if (!this.backgroundWorker.IsBusy && renderer != null)
             {
                 backgroundWorker.RunWorkerAsync();
@@ -72,7 +74,8 @@ namespace Fractalizer.Core.Controls
         // TODO
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, 128);
+
+            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, 128,baseColor);
         }
 
         private void backgroundWorker_RunWorkerCompleted(

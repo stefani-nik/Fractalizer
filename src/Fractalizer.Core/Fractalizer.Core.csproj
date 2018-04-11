@@ -104,6 +104,9 @@
     <Compile Include="Decorators\Renderer.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\MandelbrotSettingsPanel.resx">
+      <DependentUpon>MandelbrotSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FractalizerForm.resx">
       <DependentUpon>FractalizerForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -25,8 +25,10 @@ namespace Fractalizer.Core.Controls
                               .Trim();
             Color baseColor = this.colorsPanel1.GetBaseColor();
             fractalPicturePanel.RenderFractal(selected,baseColor);
+            mandelbrotSettingsPanel1.Show();
         }
 
+        //TODO: FIX
         private void iterationsTrackBar_ValueChanged(object sender, EventArgs e)
         {
             iterationsToolTip.SetToolTip(iterationsTrackBar, iterationsTrackBar.Value.ToString());
@@ -45,5 +47,9 @@ namespace Fractalizer.Core.Controls
             e.ToolTipSize = TextRenderer.MeasureText(iterationsTrackBar.Value.ToString(), new Font("Arial", 16.0f));
         }
 
+        private void SettingsPanel_Load(object sender, EventArgs e)
+        {
+            this.mandelbrotSettingsPanel1.Hide();
+        }
     }
 }

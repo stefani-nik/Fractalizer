@@ -16,5 +16,10 @@ namespace Fractalizer.Core.Controls
         {
             InitializeComponent();
         }
+
+        private void lblXvalue_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

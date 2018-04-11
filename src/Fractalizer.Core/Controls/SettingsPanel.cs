@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -67,9 +66,14 @@ namespace Fractalizer.Core.Controls
 
         private void HideSettingsPanels()
         {
-            this.mandelbrotSettingsPanel.Hide();
+           // this.mandelbrotSettingsPanel.Hide();
             this.juliaSettingsPanel.Hide();
-            this.newtonSettingsPanel.Hide();
+            //this.newtonSettingsPanel.Hide();
+        }
+
+        private void mandelbrotSettingsPanel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

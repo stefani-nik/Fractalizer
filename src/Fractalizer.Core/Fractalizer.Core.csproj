@@ -104,8 +104,14 @@
     <Compile Include="Decorators\Renderer.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\JuliaSettingsPanel.resx">
+      <DependentUpon>JuliaSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MandelbrotSettingsPanel.resx">
       <DependentUpon>MandelbrotSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NewtonSettingsPanel.resx">
+      <DependentUpon>NewtonSettingsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FractalizerForm.resx">
       <DependentUpon>FractalizerForm.cs</DependentUpon>

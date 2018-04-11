@@ -46,8 +46,9 @@ namespace Fractalizer.Core.Controls
             this.txtBoxXrange = new MetroFramework.Controls.MetroTextBox();
             this.lblYrange = new MetroFramework.Controls.MetroLabel();
             this.txtBoxYrange = new MetroFramework.Controls.MetroTextBox();
-            this.colorsPanel1 = new Fractalizer.Core.Controls.ColorsPanel();
             this.juliaSettingsPanel = new Fractalizer.Core.Controls.JuliaSettingsPanel();
+            this.colorsPanel1 = new Fractalizer.Core.Controls.ColorsPanel();
+            this.newtonSettingsPanel1 = new Fractalizer.Core.Controls.NewtonSettingsPanel();
             this.SuspendLayout();
             // 
             // fractalComboBox
@@ -293,6 +294,14 @@ namespace Fractalizer.Core.Controls
             this.txtBoxYrange.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxYrange.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // juliaSettingsPanel
+            // 
+            this.juliaSettingsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.juliaSettingsPanel.Location = new System.Drawing.Point(17, 74);
+            this.juliaSettingsPanel.Name = "juliaSettingsPanel";
+            this.juliaSettingsPanel.Size = new System.Drawing.Size(327, 36);
+            this.juliaSettingsPanel.TabIndex = 20;
+            // 
             // colorsPanel1
             // 
             this.colorsPanel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -302,19 +311,20 @@ namespace Fractalizer.Core.Controls
             this.colorsPanel1.TabIndex = 9;
             this.colorsPanel1.UseSelectable = true;
             // 
-            // juliaSettingsPanel
+            // newtonSettingsPanel1
             // 
-            this.juliaSettingsPanel.BackColor = System.Drawing.Color.Transparent;
-            this.juliaSettingsPanel.Location = new System.Drawing.Point(17, 74);
-            this.juliaSettingsPanel.Name = "juliaSettingsPanel";
-            this.juliaSettingsPanel.Size = new System.Drawing.Size(327, 36);
-            this.juliaSettingsPanel.TabIndex = 20;
+            this.newtonSettingsPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.newtonSettingsPanel1.Location = new System.Drawing.Point(52, 80);
+            this.newtonSettingsPanel1.Name = "newtonSettingsPanel1";
+            this.newtonSettingsPanel1.Size = new System.Drawing.Size(282, 29);
+            this.newtonSettingsPanel1.TabIndex = 21;
             // 
             // SettingsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Controls.Add(this.newtonSettingsPanel1);
             this.Controls.Add(this.juliaSettingsPanel);
             this.Controls.Add(this.txtBoxXrange);
             this.Controls.Add(this.txtBoxYvalue);
@@ -333,6 +343,7 @@ namespace Fractalizer.Core.Controls
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "SettingsPanel";
             this.Size = new System.Drawing.Size(1248, 126);
+            this.Load += new System.EventHandler(this.SettingsPanel_Load);
             this.ResumeLayout(false);
 
         }
@@ -354,5 +365,6 @@ namespace Fractalizer.Core.Controls
         private MetroFramework.Controls.MetroLabel lblYrange;
         private MetroFramework.Controls.MetroTextBox txtBoxYrange;
         private JuliaSettingsPanel juliaSettingsPanel;
+        private NewtonSettingsPanel newtonSettingsPanel1;
     }
 }

@@ -17,6 +17,10 @@ namespace Fractalizer.Core.Controls
             this.btnRender.Click += new EventHandler(btnRender_Click);
         }
 
+        private void SettingsPanel_Load(object sender, EventArgs e)
+        {
+            HideSettingsPanels();
+        }
 
         private void btnRender_Click(object sender, EventArgs e)
         {
@@ -71,9 +75,5 @@ namespace Fractalizer.Core.Controls
             //this.newtonSettingsPanel.Hide();
         }
 
-        private void mandelbrotSettingsPanel_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

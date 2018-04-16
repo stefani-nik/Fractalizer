@@ -1,11 +1,12 @@
 ﻿using System;
 using Fractalizer.Common;
 using Fractalizer.Fractals.Contracts;
+using Fractalizer.Strategies.Contracts;
 
 namespace Fractalizer.Fractals
 {
    
-    public sealed class Mandelbrot : Fractal
+    public sealed class Mandelbrot : Fractal, IFractalStrategy
     {
 
         private static readonly Lazy<Mandelbrot> instance = 

@@ -1,4 +1,6 @@
-﻿using Fractalizer.Common;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Fractalizer.Common;
 
 namespace Fractalizer.Fractals.Contracts
 {
@@ -36,7 +38,22 @@ namespace Fractalizer.Fractals.Contracts
 
         }
 
+        public Dictionary<string, string> GetFractalParameters()
+        {
+            var parameters = new Dictionary<string, string>()
+            {
+                {"XStartValue", this.XStartValue.ToString(CultureInfo.InvariantCulture)},
+                { "YStratValue", this.YStartValue.ToString(CultureInfo.InvariantCulture)},
+                { "XRange", this.XRange.ToString(CultureInfo.InvariantCulture)},
+                {"YRange", this.YRange.ToString(CultureInfo.InvariantCulture) }
+            };
+
+            return parameters;
+        }
+
 
         public abstract  int GetNextPixel(int coordX, int coordY, int iterations);
+
+        
     }
 }

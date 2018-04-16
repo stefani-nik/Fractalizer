@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
@@ -7,6 +8,7 @@ using Fractalizer.Core.Contracts;
 using Fractalizer.Core.Decorators;
 using Fractalizer.Fractals;
 using Fractalizer.Fractals.Contracts;
+using Fractalizer.Strategies.Contracts;
 using MetroFramework.Controls;
 
 namespace Fractalizer.Core.Controls
@@ -23,6 +25,7 @@ namespace Fractalizer.Core.Controls
 
         private IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
+        private readonly Dictionary<string, IFractalStrategy> strategies;
 
         public FractalPicturePanel()
         {
@@ -33,22 +36,31 @@ namespace Fractalizer.Core.Controls
             this.fractalImg.MouseUp += new MouseEventHandler(picBox_MouseUp);
             this.fractalImg.MouseMove += new MouseEventHandler(picBox_MouseMove);
 
+            this.strategies = new Dictionary<string, IFractalStrategy>
+            {
+                    {  "Mandelbrot", Mandelbrot.Instance },
+                    { "Julia", Julia.Instance },
+                    { "Newton", Newton.Instance }
+            };
+
         }
 
 
         public void RenderFractal(string fractalName, Color color)
         {
-            var assembly = AppDomain.CurrentDomain.Load("Fractalizer.Fractals");
-            var fractalType = assembly.GetType("Fractalizer.Fractals." + fractalName);
+            //var assembly = AppDomain.CurrentDomain.Load("Fractalizer.Fractals");
+            //var fractalType = assembly.GetType("Fractalizer.Fractals." + fractalName);
 
-            if (fractalType != null)
-            {
-                var instance = (Fractal)fractalType
-                    .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
-                    .GetValue(null);
+            //if (fractalType != null)
+            //{
+            //    var instance = (Fractal)fractalType
+            //        .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
+            //        .GetValue(null);
 
-                renderer.Fractal = instance;
-            }
+            //    renderer.Fractal = instance;
+            //}
+
+            renderer.Strategy = strategies[fractalName];
 
             this.baseColor = color;
             if (!this.backgroundWorker.IsBusy && renderer != null)

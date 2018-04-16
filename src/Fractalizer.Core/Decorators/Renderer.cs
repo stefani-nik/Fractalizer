@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Fractalizer.Common;
 using Fractalizer.Core.Contracts;
 using Fractalizer.Fractals.Contracts;
+using Fractalizer.Strategies.Contracts;
 
 namespace Fractalizer.Core.Decorators
 {
@@ -21,21 +22,22 @@ namespace Fractalizer.Core.Decorators
 
         private List<Color> palette;
         private readonly Stopwatch renderTimer;
-        private Fractal fractal;
+        private IFractalStrategy strategy;
 
         private static readonly Lazy<Renderer> instance =
                                new Lazy<Renderer>(() => new Renderer());
 
         public static Renderer Instance => instance.Value;
         
-        public Fractal Fractal
+        public IFractalStrategy Strategy
         {
             set
             {
                 if (value != null)
-                    this.fractal = value;
+                    this.strategy = value;
             }
         }
+
 
         public Bitmap MyBitmap;
 
@@ -59,7 +61,7 @@ namespace Fractalizer.Core.Decorators
             // If the points are not empty the fractal is zoom and adjustment of the parameters is needed
             if (start != Point.Empty && end != Point.Empty)
             {
-                fractal.AdjustParameters(start.X,start.Y, end.X, end.Y);
+                strategy.AdjustParameters(start.X,start.Y, end.X, end.Y);
             }
 
 
@@ -83,7 +85,7 @@ namespace Fractalizer.Core.Decorators
                 {
                     int index = ((y * width) + x) * bytesPerPixel;
 
-                    int iter = fractal.GetNextPixel(x, y, iterations);
+                    int iter = strategy.GetNextPixel(x, y, iterations);
                     Color pixelColor = iter == iterations ? Color.White : palette[iter % palette.Count];
 
                     pixels[index + 0] = pixelColor.B;
@@ -105,23 +107,25 @@ namespace Fractalizer.Core.Decorators
             return MyBitmap;
         }
 
-        public string GetCurrentX()
-        {
-            return this.fractal.XStartValue.ToString(CultureInfo.InvariantCulture);
-        }
-        public string GetCurrentY()
-        {
-            return this.fractal.YStartValue.ToString(CultureInfo.InvariantCulture);
-        }
-        public string GetCurrentRangeStart()
-        {
-            return this.fractal.XRange.ToString(CultureInfo.InvariantCulture);
-        }
-        public string GetCurrentRangeEnd()
-        {
-            return this.fractal.YRange.ToString(CultureInfo.InvariantCulture);
-        }
+        //public string GetCurrentX()
+        //{
+        //    return this..XStartValue.ToString(CultureInfo.InvariantCulture);
+        //}
+        //public string GetCurrentY()
+        //{
+        //    return this.fractal.YStartValue.ToString(CultureInfo.InvariantCulture);
+        //}
+        //public string GetCurrentRangeStart()
+        //{
+        //    return this.fractal.XRange.ToString(CultureInfo.InvariantCulture);
+        //}
+        //public string GetCurrentRangeEnd()
+        //{
+        //    return this.fractal.YRange.ToString(CultureInfo.InvariantCulture);
+        //}
 
+
+       /// public 
         public string GetRenderingTime()
         {
             TimeSpan ts = renderTimer.Elapsed;

@@ -157,6 +157,10 @@
       <Project>{2060AA1B-D7A0-46DA-8851-894428B9778E}</Project>
       <Name>Fractalizer.Fractals</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fractalizer.Strategies\Fractalizer.Strategies.csproj">
+      <Project>{eab6ae3d-32e2-4063-9904-8d3ca1d3cdc0}</Project>
+      <Name>Fractalizer.Strategies</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />

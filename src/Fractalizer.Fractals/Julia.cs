@@ -1,11 +1,12 @@
 ﻿using System;
 using Fractalizer.Common;
 using Fractalizer.Fractals.Contracts;
+using Fractalizer.Strategies.Contracts;
 
 namespace Fractalizer.Fractals
 {
    
-    public sealed class Julia : Fractal
+    public sealed class Julia : Fractal, IFractalStrategy
     {
 
         private static readonly Lazy<Julia> instance =

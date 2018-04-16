@@ -1,17 +1,18 @@
 ﻿using System;
 using Fractalizer.Common;
 using Fractalizer.Fractals.Contracts;
+using Fractalizer.Strategies.Contracts;
 
 namespace Fractalizer.Fractals
 {
  
-    public sealed class Newton : Fractal
+    public sealed class Newton : Fractal, IFractalStrategy
     {
 
         private static readonly Lazy<Newton> instance =
                                 new Lazy<Newton>(() => new Newton());
 
-        public static Fractal Instance => instance.Value;
+        public static Newton Instance => instance.Value;
 
         private Newton() { }
 

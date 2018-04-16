@@ -41,16 +41,18 @@
             "0.285+0i",
             "0.285+0.01i",
             "0.45+0.1428i",
-            "-0.70176-0.3842i",
-            "-0.835-0.2321i",
+            "-0.70176+(-0.3842i)",
+            "-0.835+(-0.2321i)",
             "-0.8+0.156i",
             "-0.7269+0.1889i",
-            "-0.8i"});
+            "0+(-0.8i)"});
             this.juliaComplexNumberComboBox.Location = new System.Drawing.Point(185, 3);
             this.juliaComplexNumberComboBox.Name = "juliaComplexNumberComboBox";
             this.juliaComplexNumberComboBox.Size = new System.Drawing.Size(136, 29);
             this.juliaComplexNumberComboBox.TabIndex = 0;
             this.juliaComplexNumberComboBox.UseSelectable = true;
+            this.juliaComplexNumberComboBox.SelectedIndexChanged += new System.EventHandler(this.juliaComplexNumberComboBox_SelectedIndexChanged);
+            this.juliaComplexNumberComboBox.SelectedIndex = 0;
             // 
             // lblChooseComplex
             // 

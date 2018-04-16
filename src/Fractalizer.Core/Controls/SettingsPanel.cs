@@ -4,13 +4,16 @@ using System.Reflection;
 using System.Windows.Forms;
 using MetroFramework.Controls;
 using System.Collections.Generic;
+using Fractalizer.Core.Contracts;
 
 namespace Fractalizer.Core.Controls
 {
     public partial class SettingsPanel : MetroUserControl
     {
         private readonly FractalPicturePanel fractalPicturePanel;
-        private readonly Dictionary<string, UserControl> settingsPanels;
+        private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels;
+        private ICustomSettingsPanel activeSettinsPanel;
+        private string fractalParameters = null;
 
         public SettingsPanel(FractalPicturePanel frPicPanel)
         {
@@ -19,7 +22,7 @@ namespace Fractalizer.Core.Controls
             this.btnRender.Click += new EventHandler(btnRender_Click);
 
             this.HideSettingsPanels();
-            this.settingsPanels = new Dictionary<string, UserControl>
+            this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
                 { "Julia" , this.juliaSettingsPanel },
                 { "Newton", this.newtonSettingsPanel1 }
@@ -38,9 +41,13 @@ namespace Fractalizer.Core.Controls
                               .Split(' ')[0]
                               .Trim();
             Color baseColor = this.colorsPanel1.GetBaseColor();
+
+            this.fractalParameters = this.activeSettinsPanel.Params;
+
+
             //HideSettingsPanels();
-           // ShowSettingsPanel(selected);
-            fractalPicturePanel.RenderFractal(selected,baseColor);
+            // ShowSettingsPanel(selected);
+            fractalPicturePanel.RenderFractal(selected,baseColor,fractalParameters);
 
         }
 
@@ -69,7 +76,8 @@ namespace Fractalizer.Core.Controls
 
             if(settingsPanels.ContainsKey(fractal))
             {
-                settingsPanels[fractal].Show();
+                this.activeSettinsPanel = settingsPanels[fractal];
+                this.activeSettinsPanel.Show();
             }
 
             //string fieldName = fractal.ToLower() + "SettingsPanel";

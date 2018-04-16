@@ -57,9 +57,9 @@ namespace Fractalizer.Common
             return (double)this.Re * this.Re + this.Im * this.Im;
         }
 
-        public ComplexPoint GetPointFromString(string input)
+        public static ComplexPoint GetPointFromString(string input)
         {
-            string[] @params = input.Split(new char[] { ' ', 'i'}
+            string[] @params = input.Split(new char[] { ' ', 'i','+', '(', ')'}
                                         , StringSplitOptions.RemoveEmptyEntries);
             ComplexPoint c = new ComplexPoint(double.Parse(@params[0]), double.Parse(@params[1]));
 

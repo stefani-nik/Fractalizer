@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,8 +7,11 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Fractalizer.Common;
 using Fractalizer.Core.Contracts;
+using Fractalizer.Core.Controls;
+using Fractalizer.Core.Forms;
 using Fractalizer.Fractals.Contracts;
 using Fractalizer.Strategies.Contracts;
 
@@ -23,6 +27,7 @@ namespace Fractalizer.Core.Decorators
         private List<Color> palette;
         private readonly Stopwatch renderTimer;
         private IFractalStrategy strategy;
+        private JuliaSettingsPanel settingsPanel;
 
         private static readonly Lazy<Renderer> instance =
                                new Lazy<Renderer>(() => new Renderer());
@@ -53,8 +58,9 @@ namespace Fractalizer.Core.Decorators
         /// <summary>
         /// Multithreading rendering of the chosen fractal
         /// </summary>
-        public Bitmap RenderFractal(Point start, Point end, int iterations, Color baseColor)
+        public Bitmap RenderFractal(Point start, Point end, int iterations, Color baseColor, string fractalParams)
         {
+           
             this.renderTimer.Start();
             this.palette = ColorUtility.LoadPalette(baseColor);
 
@@ -78,6 +84,7 @@ namespace Fractalizer.Core.Decorators
 
             var options = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount - 1 };
 
+
             Parallel.For(0, height, options, y =>
             {
 
@@ -85,7 +92,7 @@ namespace Fractalizer.Core.Decorators
                 {
                     int index = ((y * width) + x) * bytesPerPixel;
 
-                    int iter = strategy.GetNextPixel(x, y, iterations);
+                    int iter = strategy.GetNextPixel(x, y, iterations, fractalParams);
                     Color pixelColor = iter == iterations ? Color.White : palette[iter % palette.Count];
 
                     pixels[index + 0] = pixelColor.B;
@@ -125,7 +132,14 @@ namespace Fractalizer.Core.Decorators
         //}
 
 
-       /// public 
+        /// public 
+
+        //public string GetParameters()
+        //{
+        //    return this.settingsPanel.GetComplexNumber();
+        //} 
+
+
         public string GetRenderingTime()
         {
             TimeSpan ts = renderTimer.Elapsed;

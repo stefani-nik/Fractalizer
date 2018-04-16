@@ -8,7 +8,8 @@ namespace Fractalizer.Core.Contracts
     {
         //Fractal Fractal { set; }
         IFractalStrategy Strategy { set; }
-        Bitmap RenderFractal(Point start, Point end, int iterations, Color baseColor);
+        Bitmap RenderFractal(Point start, Point end, int iterations,
+                            Color baseColor, string fractalParameters);
        // string GetCurrentX();
        // string GetCurrentY();
        // string GetCurrentRangeStart();

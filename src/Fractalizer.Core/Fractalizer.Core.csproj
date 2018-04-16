@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ICustomSettingsPanel.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="Controls\JuliaSettingsPanel.cs">
       <SubType>UserControl</SubType>

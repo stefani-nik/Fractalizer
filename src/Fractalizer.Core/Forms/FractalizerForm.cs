@@ -14,8 +14,9 @@ namespace Fractalizer.Core.Forms
 
         #endregion
 
-        private SettingsPanel settingsPanel;
-        private FractalPicturePanel fractalPicturePannel;
+        public SettingsPanel settingsPanel;
+        public FractalPicturePanel fractalPicturePannel;
+
         public FractalizerForm()
         {
             this.fractalPicturePannel = new FractalPicturePanel();
@@ -23,6 +24,7 @@ namespace Fractalizer.Core.Forms
             InitializeComponent();
             this.Controls.Add(fractalPicturePannel);
             this.Controls.Add(settingsPanel);
+            this.Activate();
             //this.UpdateFormFields();
         }
 

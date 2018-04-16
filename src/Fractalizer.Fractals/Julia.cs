@@ -23,7 +23,7 @@ namespace Fractalizer.Fractals
             double xValue = this.XStartValue + this.xOffset*coordX;
             double yValue = this.YStartValue + this.yOffset*coordY;
 
-            ComplexPoint c = new ComplexPoint(0, -0.8);
+            ComplexPoint c = ComplexPoint.GetPointFromString(parameters);
             ComplexPoint z = new ComplexPoint(xValue, yValue);
 
             int it = 0;

@@ -11,22 +11,24 @@ namespace Fractalizer.Core.Controls
     public partial class SettingsPanel : MetroUserControl
     {
         private readonly FractalPicturePanel fractalPicturePanel;
-        private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels;
+        private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels ;
         private ICustomSettingsPanel activeSettinsPanel;
         private string fractalParameters = null;
 
         public SettingsPanel(FractalPicturePanel frPicPanel)
         {
             fractalPicturePanel = frPicPanel;
-            InitializeComponent();
-            this.btnRender.Click += new EventHandler(btnRender_Click);
 
-            this.HideSettingsPanels();
+            InitializeComponent();
+
+            // this.HideSettingsPanels();
             this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
                 { "Julia" , this.juliaSettingsPanel },
                 { "Newton", this.newtonSettingsPanel1 }
             };
+
+            this.btnRender.Click += new EventHandler(btnRender_Click);
         }
 
         private void SettingsPanel_Load(object sender, EventArgs e)
@@ -73,6 +75,7 @@ namespace Fractalizer.Core.Controls
 
         private void ShowSettingsPanel(string fractal)
         {
+
 
             if(settingsPanels.ContainsKey(fractal))
             {

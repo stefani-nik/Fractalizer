@@ -27,7 +27,6 @@ namespace Fractalizer.Core.Decorators
         private List<Color> palette;
         private readonly Stopwatch renderTimer;
         private IFractalStrategy strategy;
-        private JuliaSettingsPanel settingsPanel;
 
         private static readonly Lazy<Renderer> instance =
                                new Lazy<Renderer>(() => new Renderer());

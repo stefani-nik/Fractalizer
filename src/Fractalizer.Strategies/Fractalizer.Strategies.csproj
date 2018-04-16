@@ -41,11 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IFractalStrategy.cs" />
-    <Compile Include="Contracts\IJuliaComplexNumberStrategy.cs" />
-    <Compile Include="JuliaComplexNumberStrategy.cs" />
+    <Compile Include="Contracts\INewtonEquationStategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Fractalizer.Common\Fractalizer.Common.csproj">
+      <Project>{5ca73258-bc5e-4545-8ce1-2f0b934751c2}</Project>
+      <Name>Fractalizer.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

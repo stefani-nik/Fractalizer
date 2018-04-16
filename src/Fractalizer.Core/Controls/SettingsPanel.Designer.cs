@@ -148,6 +148,7 @@ namespace Fractalizer.Core.Controls
             this.txtBoxXvalue.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBoxXvalue.CustomButton.UseSelectable = true;
             this.txtBoxXvalue.CustomButton.Visible = false;
+            this.txtBoxXvalue.Enabled = false;
             this.txtBoxXvalue.Lines = new string[] {
         "0.0"};
             this.txtBoxXvalue.Location = new System.Drawing.Point(474, 87);
@@ -191,6 +192,7 @@ namespace Fractalizer.Core.Controls
             this.txtBoxYvalue.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBoxYvalue.CustomButton.UseSelectable = true;
             this.txtBoxYvalue.CustomButton.Visible = false;
+            this.txtBoxYvalue.Enabled = false;
             this.txtBoxYvalue.Lines = new string[] {
         "0.0"};
             this.txtBoxYvalue.Location = new System.Drawing.Point(677, 86);
@@ -234,6 +236,7 @@ namespace Fractalizer.Core.Controls
             this.txtBoxXrange.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBoxXrange.CustomButton.UseSelectable = true;
             this.txtBoxXrange.CustomButton.Visible = false;
+            this.txtBoxXrange.Enabled = false;
             this.txtBoxXrange.Lines = new string[] {
         "0.0"};
             this.txtBoxXrange.Location = new System.Drawing.Point(843, 87);
@@ -277,6 +280,7 @@ namespace Fractalizer.Core.Controls
             this.txtBoxYrange.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBoxYrange.CustomButton.UseSelectable = true;
             this.txtBoxYrange.CustomButton.Visible = false;
+            this.txtBoxYrange.Enabled = false;
             this.txtBoxYrange.Lines = new string[] {
         "0.0"};
             this.txtBoxYrange.Location = new System.Drawing.Point(999, 87);

@@ -16,7 +16,7 @@ namespace Fractalizer.Fractals
 
         private Newton() { }
 
-        public override int GetNextPixel(int coordX, int coordY, int iterations)
+        public override int GetNextPixel(int coordX, int coordY, int iterations, string parameters= null)
         {
 
             double xValue = this.XStartValue + this.xOffset * coordX;

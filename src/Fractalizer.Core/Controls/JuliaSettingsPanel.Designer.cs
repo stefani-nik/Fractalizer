@@ -28,19 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.juliaComplexNumberComboBox = new MetroFramework.Controls.MetroComboBox();
             this.lblChooseComplex = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
-            // metroComboBox1
+            // juliaComplexNumberComboBox
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(185, 3);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(136, 29);
-            this.metroComboBox1.TabIndex = 0;
-            this.metroComboBox1.UseSelectable = true;
+            this.juliaComplexNumberComboBox.FormattingEnabled = true;
+            this.juliaComplexNumberComboBox.ItemHeight = 23;
+            this.juliaComplexNumberComboBox.Items.AddRange(new object[] {
+            "0.4+0.6i",
+            "0.285+0i",
+            "0.285+0.01i",
+            "0.45+0.1428i",
+            "-0.70176-0.3842i",
+            "-0.835-0.2321i",
+            "-0.8+0.156i",
+            "-0.7269+0.1889i",
+            "-0.8i"});
+            this.juliaComplexNumberComboBox.Location = new System.Drawing.Point(185, 3);
+            this.juliaComplexNumberComboBox.Name = "juliaComplexNumberComboBox";
+            this.juliaComplexNumberComboBox.Size = new System.Drawing.Size(136, 29);
+            this.juliaComplexNumberComboBox.TabIndex = 0;
+            this.juliaComplexNumberComboBox.UseSelectable = true;
             // 
             // lblChooseComplex
             // 
@@ -58,7 +68,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.lblChooseComplex);
-            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.juliaComplexNumberComboBox);
             this.Name = "JuliaSettingsPanel";
             this.Size = new System.Drawing.Size(327, 36);
             this.ResumeLayout(false);
@@ -67,7 +77,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox juliaComplexNumberComboBox;
         private MetroFramework.Controls.MetroLabel lblChooseComplex;
     }
 }

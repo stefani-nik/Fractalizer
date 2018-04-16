@@ -19,7 +19,7 @@ namespace Fractalizer.Fractals
         /// <summary>
         /// Calculates the next pixel with the equation Z(n+1) = Z(n)^2 + C
         /// </summary>
-        public override int GetNextPixel(int coordX, int coordY, int iterations)
+        public override int GetNextPixel(int coordX, int coordY, int iterations, string parameters = null)
         {
 
             double xValue = this.XStartValue + this.xOffset * coordX;

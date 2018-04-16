@@ -52,7 +52,7 @@ namespace Fractalizer.Fractals.Contracts
         }
 
 
-        public abstract  int GetNextPixel(int coordX, int coordY, int iterations);
+        public abstract  int GetNextPixel(int coordX, int coordY, int iterations, string parameters = null);
 
         
     }

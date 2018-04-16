@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IFractalStrategy.cs" />
+    <Compile Include="Contracts\IJuliaComplexNumberStrategy.cs" />
+    <Compile Include="JuliaComplexNumberStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

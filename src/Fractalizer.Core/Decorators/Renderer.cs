@@ -1,10 +1,12 @@
 ﻿using System;
 using System.CodeDom;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,7 +63,7 @@ namespace Fractalizer.Core.Decorators
         {
            
             this.renderTimer.Start();
-            this.palette = baseColor == Color.Empty ? ColorsManager.LoadPalette() : ColorUtility.LoadPalette(baseColor);
+            this.palette = baseColor == Color.Empty ? ColorsManager.LoadPalette() : ColorUtility.LoadPalette(baseColor).ToList();
             this.strategy.SetCustomParameters(iterations, fractalParams);
 
             // If the points are not empty the fractal is zoom and adjustment of the parameters is needed

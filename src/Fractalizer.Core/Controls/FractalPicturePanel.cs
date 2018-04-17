@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fractalizer.Core.Contracts;
 using Fractalizer.Core.Decorators;
@@ -16,14 +18,16 @@ namespace Fractalizer.Core.Controls
 
         private Point zoomStart = Point.Empty;
         private Point zoomEnd = Point.Empty;
+        private Point checkZoomPoint = Point.Empty;
         private Rectangle zoomRectangle;
         private bool isZooming = false;
         private bool isFractalRendered = false;
         private Color baseColor = Color.Black;
         private string fractalParameters = null;
         private int iterations = 0;
-        private readonly StatusPanel statusPanel;
         private string fractal = null;
+        private readonly StatusPanel statusPanel;
+       // private readonly SettingsPanel settingsPanel;
 
         private readonly IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
@@ -55,14 +59,45 @@ namespace Fractalizer.Core.Controls
             this.baseColor = color;
             this.fractalParameters = parameters;
             this.iterations = it;
-           
+
 
             if (!this.backgroundWorker.IsBusy && renderer != null)
             {
                 this.statusPanel.Show();
+                this.statusPanel.StartStatusRendering();
+
                 backgroundWorker.RunWorkerAsync();
             }
+
+            // var settingsPanel = Controls.Find("SettingsPanel",true);
         }
+
+        //public async void RenderFractal(int it, Color color, string parameters)
+        //{
+        //    this.baseColor = color;
+        //    this.fractalParameters = parameters;
+        //    this.iterations = it;
+
+
+        //    if (renderer != null)
+        //    {
+        //        this.statusPanel.Show();
+        //        this.statusPanel.StartStatusRendering();
+
+        //        await Task.Run(() =>
+        //        {
+        //            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations, baseColor, fractalParameters);
+        //            this.isFractalRendered = true;
+
+        //            string timeStr = renderer.GetRenderingTime();
+        //            this.statusPanel.StopStatusRendering();
+        //            this.statusPanel.SetRenderingTime(timeStr);
+        //        });
+        //        //backgroundWorker.RunWorkerAsync();
+        //    }
+
+        //    // var settingsPanel = Controls.Find("SettingsPanel",true);
+        //}
 
         public Dictionary<string, string> GetFractalParameters()
         {
@@ -77,7 +112,7 @@ namespace Fractalizer.Core.Controls
 
         private bool MouseIsOverPicture(Control c)
         {
-            return c.ClientRectangle.Contains(c.PointToClient(fractalImg.PointToScreen(zoomEnd)));
+            return c.ClientRectangle.Contains(c.PointToClient(fractalImg.PointToScreen(checkZoomPoint)));
         }
 
         private void InitializeBackgroundWorker()
@@ -92,7 +127,6 @@ namespace Fractalizer.Core.Controls
         // TODO
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.statusPanel.StartStatusRendering();
             this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations,baseColor, fractalParameters);
         }
 
@@ -101,9 +135,11 @@ namespace Fractalizer.Core.Controls
             RunWorkerCompletedEventArgs e)
         {
             this.isFractalRendered = true;
+
             string timeStr = renderer.GetRenderingTime();
-            this.statusPanel.SetRenderingTime(timeStr);
             this.statusPanel.StopStatusRendering();
+            this.statusPanel.SetRenderingTime(timeStr);
+
             //this.UpdateFormFields();
         }
 
@@ -141,21 +177,13 @@ namespace Fractalizer.Core.Controls
                 ControlPaint.DrawReversibleFrame(zoomRectangle, this.BackColor, FrameStyle.Dashed);
 
                 double zoomWidth = e.X - zoomStart.X;
-                double zoomHeight = e.Y - zoomStart.Y;
+                double zoomHeight = (e.X - zoomStart.X) / 2.0;
 
-                if (zoomWidth > zoomHeight)
-                {
-                    zoomHeight = zoomWidth;
-                }
-                else
-                {
-                    zoomWidth = zoomHeight;
-                }
-
-                this.zoomEnd = new Point((int)(zoomStart.X + zoomWidth), (int)(zoomStart.Y + zoomHeight));
+                this.zoomEnd = new Point((int)(zoomStart.X + zoomWidth), (int)(zoomStart.Y + zoomHeight * 2));
+                this.checkZoomPoint = new Point((int)(zoomStart.X + zoomWidth), (int)(zoomStart.Y + zoomHeight));
 
                 this.zoomRectangle.Width = (int)zoomWidth;
-                this.zoomRectangle.Height = (int)zoomHeight / 2;
+                this.zoomRectangle.Height = (int)zoomHeight;
 
                 ControlPaint.DrawReversibleFrame(zoomRectangle, this.BackColor, FrameStyle.Dashed);
             }

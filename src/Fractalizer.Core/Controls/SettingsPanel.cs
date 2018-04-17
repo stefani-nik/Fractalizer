@@ -12,7 +12,7 @@ namespace Fractalizer.Core.Controls
     {
         private readonly FractalPicturePanel fractalPicturePanel;
         private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels ;
-        private ICustomSettingsPanel activeSettinsPanel;
+        private ICustomSettingsPanel activeSettingsPanel;
         private string fractalParameters = null;
 
         public SettingsPanel(FractalPicturePanel frPicPanel)
@@ -41,10 +41,11 @@ namespace Fractalizer.Core.Controls
             Color baseColor = this.colorsPanel.IsColorful() ? Color.Empty : this.colorsPanel.GetBaseColor();
             int iterations = this.iterationsTrackBar.Value;
                                     
-            if(activeSettinsPanel != null)
-            this.fractalParameters = this.activeSettinsPanel.Params;
+            if(activeSettingsPanel != null)
+            this.fractalParameters = this.activeSettingsPanel.Params;
 
             this.fractalPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
+
             this.SetFractalParameters();
 
         }
@@ -73,8 +74,8 @@ namespace Fractalizer.Core.Controls
         {
             if(settingsPanels.ContainsKey(fractal))
             {
-                this.activeSettinsPanel = settingsPanels[fractal];
-                this.activeSettinsPanel.Show();
+                this.activeSettingsPanel = settingsPanels[fractal];
+                this.activeSettingsPanel.Show();
             }
             
         }

@@ -50,8 +50,7 @@ namespace Fractalizer.Core.Decorators
 
         private Renderer()
         {
-            //this.palette = ColorsManager.LoadPalette();
-            this.MyBitmap = new Bitmap(FormConstants.PicturePanelWidth, FormConstants.PicturePanelHeight);
+            this.MyBitmap = new Bitmap(Constants.PicturePanelWidth, Constants.PicturePanelHeight);
             this.renderTimer = new Stopwatch();
         }
 
@@ -115,31 +114,6 @@ namespace Fractalizer.Core.Decorators
 
             return MyBitmap;
         }
-
-        //public string GetCurrentX()
-        //{
-        //    return this..XStartValue.ToString(CultureInfo.InvariantCulture);
-        //}
-        //public string GetCurrentY()
-        //{
-        //    return this.fractal.YStartValue.ToString(CultureInfo.InvariantCulture);
-        //}
-        //public string GetCurrentRangeStart()
-        //{
-        //    return this.fractal.XRange.ToString(CultureInfo.InvariantCulture);
-        //}
-        //public string GetCurrentRangeEnd()
-        //{
-        //    return this.fractal.YRange.ToString(CultureInfo.InvariantCulture);
-        //}
-
-
-        /// public 
-
-        //public string GetParameters()
-        //{
-        //    return this.settingsPanel.GetComplexNumber();
-        //} 
 
 
         public string GetRenderingTime()

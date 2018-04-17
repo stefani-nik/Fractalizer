@@ -14,22 +14,27 @@ namespace Fractalizer.Core.Forms
 
         #endregion
 
-        public SettingsPanel settingsPanel;
-        public FractalPicturePanel fractalPicturePanel;
-        public StatusPanel statusPanel;
+        private SettingsPanel settingsPanel;
+        private FractalPicturePanel fractalPicturePanel;
+        private StatusPanel statusPanel;
 
         public FractalizerForm()
         {
             this.statusPanel = new StatusPanel();
-            this.fractalPicturePanel = new FractalPicturePanel(this.statusPanel);
-            this.settingsPanel = new SettingsPanel(this.fractalPicturePanel);
-            this.fractalPicturePanel.settingsPanel = this.settingsPanel;
-             InitializeComponent();
+            this.fractalPicturePanel = new FractalPicturePanel();
+            this.settingsPanel = new SettingsPanel();
+
+            this.settingsPanel.FormPicturePanel = this.fractalPicturePanel;
+            this.fractalPicturePanel.FormSettingsPanel = this.settingsPanel;
+            this.fractalPicturePanel.FormStatusPanel = this.statusPanel;
+           
+            InitializeComponent();
             this.Controls.Add(fractalPicturePanel);
             this.Controls.Add(settingsPanel);
             this.Controls.Add(statusPanel);
-            //this.Activate();
-            //this.UpdateFormFields();
+
+            this.statusPanel.Hide();
+
         }
 
    

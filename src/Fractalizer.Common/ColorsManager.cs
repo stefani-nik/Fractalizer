@@ -9,7 +9,7 @@ namespace Fractalizer.Common
     public static class ColorsManager
     {
 
-        public static int interval = FractalsConstants.ColorsInterval;
+        public static int interval = Constants.ColorsInterval;
         public static readonly List<Color> colors = new List<Color>();
 
         public static List<Color> LoadPalette()

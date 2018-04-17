@@ -6,25 +6,25 @@ namespace Fractalizer.Fractals.Contracts
 {
     public abstract class Fractal
     {
-        public double XStartValue { get; private set; } = FractalsConstants.StartValueX;
+        public double XStartValue { get; private set; } = Constants.StartValueX;
 
-        public double YStartValue { get; private set; } = FractalsConstants.StartValueY;
+        public double YStartValue { get; private set; } = Constants.StartValueY;
 
-        public double XRange { get; private set; } = FractalsConstants.XRange;
+        public double XRange { get; private set; } = Constants.XRange;
 
-        public double YRange { get; private set; } = FractalsConstants.YRange;
+        public double YRange { get; private set; } = Constants.YRange;
 
-        protected double xOffset = FractalsConstants.StartOffsetX;
-        protected double yOffset = FractalsConstants.StartOffsetY;
+        protected double xOffset = Constants.StartOffsetX;
+        protected double yOffset = Constants.StartOffsetY;
 
 
         public void AdjustParameters(int zoomStartX, int zoomStartY, int zoomEndX, int zoomEndY)
         {
-            double startX = this.XRange * zoomStartX / FormConstants.PicturePanelWidth;
-            double startY = this.YRange * zoomStartY / FormConstants.PicturePanelWidth;
+            double startX = this.XRange * zoomStartX / Constants.PicturePanelWidth;
+            double startY = this.YRange * zoomStartY / Constants.PicturePanelWidth;
 
-            double endX = this.XRange * zoomEndX / FormConstants.PicturePanelWidth;
-            double endY = this.YRange * zoomEndY / FormConstants.PicturePanelWidth;
+            double endX = this.XRange * zoomEndX / Constants.PicturePanelWidth;
+            double endY = this.YRange * zoomEndY / Constants.PicturePanelWidth;
 
 
             this.XStartValue += startX;
@@ -33,8 +33,8 @@ namespace Fractalizer.Fractals.Contracts
             this.XRange = endX - startX;
             this.YRange = endY - startY;
 
-            this.xOffset = (endX - startX) / (double)FormConstants.PicturePanelWidth;
-            this.yOffset = (endY - startY) / (double)FormConstants.PicturePanelWidth;
+            this.xOffset = (endX - startX) / (double)Constants.PicturePanelWidth;
+            this.yOffset = (endY - startY) / (double)Constants.PicturePanelWidth;
 
         }
 
@@ -53,12 +53,12 @@ namespace Fractalizer.Fractals.Contracts
 
         public void SetDefaultParameters()
         {
-            this.XStartValue = FractalsConstants.StartValueX;
-            this.YStartValue = FractalsConstants.StartValueY;
-            this.XRange = FractalsConstants.XRange;
-            this.YRange = FractalsConstants.YRange;
-            this.xOffset = FractalsConstants.StartOffsetX;
-            this.yOffset = FractalsConstants.StartOffsetY;
+            this.XStartValue = Constants.StartValueX;
+            this.YStartValue = Constants.StartValueY;
+            this.XRange = Constants.XRange;
+            this.YRange = Constants.YRange;
+            this.xOffset = Constants.StartOffsetX;
+            this.yOffset = Constants.StartOffsetY;
         }
 
         public abstract  int GetNextPixel(int coordX, int coordY);

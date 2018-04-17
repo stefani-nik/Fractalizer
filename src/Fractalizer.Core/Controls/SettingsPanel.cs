@@ -4,23 +4,24 @@ using System.Reflection;
 using System.Windows.Forms;
 using MetroFramework.Controls;
 using System.Collections.Generic;
+using Fractalizer.Common;
 using Fractalizer.Core.Contracts;
 
 namespace Fractalizer.Core.Controls
 {
     public partial class SettingsPanel : MetroUserControl
     {
-        private readonly FractalPicturePanel fractalPicturePanel;
         private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels ;
         private ICustomSettingsPanel activeSettingsPanel;
         private string fractalParameters = null;
 
-        public SettingsPanel(FractalPicturePanel frPicPanel)
+        public FractalPicturePanel FormPicturePanel { get; set; }
+
+        public SettingsPanel()
         {
-            this.fractalPicturePanel = frPicPanel;
 
             InitializeComponent();
-            this.UpdateFractalParameters();
+            this.SetDefaultParameters();
 
             this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
@@ -45,9 +46,9 @@ namespace Fractalizer.Core.Controls
             if(activeSettingsPanel != null)
             this.fractalParameters = this.activeSettingsPanel.Params;
 
-            this.fractalPicturePanel.SetDefaultParameters();
+            this.FormPicturePanel.SetDefaultParameters();
 
-            this.fractalPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
+            this.FormPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
 
             this.UpdateFractalParameters();
 
@@ -91,12 +92,15 @@ namespace Fractalizer.Core.Controls
 
         public void UpdateFractalParameters()
         {
-            var currentParams = this.fractalPicturePanel.GetFractalParameters();
+          
+                var currentParams = this.FormPicturePanel.GetFractalParameters();
 
-            this.txtBoxXvalue.Text = currentParams["XStartValue"];
-            this.txtBoxYvalue.Text = currentParams["YStartValue"];
-            this.txtBoxXrange.Text = currentParams["XRange"];
-            this.txtBoxYrange.Text = currentParams["YRange"];
+                this.txtBoxXvalue.Text = currentParams["XStartValue"];
+                this.txtBoxYvalue.Text = currentParams["YStartValue"];
+                this.txtBoxXrange.Text = currentParams["XRange"];
+                this.txtBoxYrange.Text = currentParams["YRange"];
+            
+          
         }
 
         private void fractalComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,9 +110,21 @@ namespace Fractalizer.Core.Controls
                               .ToString()
                               .Split(' ')[0]
                               .Trim();
+
             this.ShowSettingsPanel(selected);
-            this.fractalPicturePanel.SetStrategy(selected);
-            this.UpdateFractalParameters();
+
+            this.FormPicturePanel?.SetStrategy(selected);
+
+            //this.UpdateFractalParameters();
+        }
+
+        private void SetDefaultParameters()
+        {
+            this.txtBoxXvalue.Text = Constants.StartValueX.ToString();
+            this.txtBoxYvalue.Text = Constants.StartValueY.ToString();
+            this.txtBoxXrange.Text = Constants.XRange.ToString();
+            this.txtBoxYrange.Text = Constants.YRange.ToString();
+           
         }
     }
 }

@@ -46,8 +46,7 @@
     <Compile Include="ColorUtility.cs" />
     <Compile Include="ComplexPoint.cs" />
     <Compile Include="Contracts\IComplexPoint.cs" />
-    <Compile Include="FormConstants.cs" />
-    <Compile Include="FractalsConstants.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fractalizer.Common;
 using Fractalizer.Core.Contracts;
 using Fractalizer.Core.Decorators;
-using Fractalizer.Core.Forms;
 using Fractalizer.Fractals;
 using Fractalizer.Strategies.Contracts;
 using MetroFramework.Controls;
@@ -25,18 +23,17 @@ namespace Fractalizer.Core.Controls
         private Color baseColor = Color.Black;
         private string fractalParameters = null;
         private int iterations = 0;
-        private string fractal = null;
-        private readonly StatusPanel statusPanel;
-       // private readonly SettingsPanel settingsPanel;
+        private string fractal = Constants.DefaultFractal;
 
         private readonly IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
         private readonly Dictionary<string, IFractalStrategy> strategies;
 
-        public SettingsPanel settingsPanel { get; set; }
+        public SettingsPanel FormSettingsPanel { get; set; }
+        public StatusPanel FormStatusPanel { get; set; }
         
 
-        public FractalPicturePanel(StatusPanel statPanel)
+        public FractalPicturePanel()
         {
             InitializeComponent();
             this.backgroundWorker = new BackgroundWorker();
@@ -51,8 +48,8 @@ namespace Fractalizer.Core.Controls
                     { "Julia", Julia.Instance },
                     { "Newton", Newton.Instance }
             };
-            this.statusPanel = statPanel;
-            this.statusPanel.Hide();
+
+            this.SetStrategy(fractal);
         }
 
 
@@ -65,8 +62,8 @@ namespace Fractalizer.Core.Controls
 
             if (!this.backgroundWorker.IsBusy && renderer != null)
             {
-                this.statusPanel.Show();
-                this.statusPanel.StartStatusRendering();
+                this.FormStatusPanel.Show();
+                this.FormStatusPanel.StartStatusRendering();
 
                 backgroundWorker.RunWorkerAsync();
             }
@@ -74,33 +71,6 @@ namespace Fractalizer.Core.Controls
              
            
         }
-
-        //public async void RenderFractal(int it, Color color, string parameters)
-        //{
-        //    this.baseColor = color;
-        //    this.fractalParameters = parameters;
-        //    this.iterations = it;
-
-
-        //    if (renderer != null)
-        //    {
-        //        this.statusPanel.Show();
-        //        this.statusPanel.StartStatusRendering();
-
-        //        await Task.Run(() =>
-        //        {
-        //            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations, baseColor, fractalParameters);
-        //            this.isFractalRendered = true;
-
-        //            string timeStr = renderer.GetRenderingTime();
-        //            this.statusPanel.StopStatusRendering();
-        //            this.statusPanel.SetRenderingTime(timeStr);
-        //        });
-        //        //backgroundWorker.RunWorkerAsync();
-        //    }
-
-        //    // var settingsPanel = Controls.Find("SettingsPanel",true);
-        //}
 
         public Dictionary<string, string> GetFractalParameters()
         {
@@ -132,9 +102,6 @@ namespace Fractalizer.Core.Controls
         }
 
 
-
-
-        // TODO
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations,baseColor, fractalParameters);
@@ -147,11 +114,9 @@ namespace Fractalizer.Core.Controls
             this.isFractalRendered = true;
 
             string timeStr = renderer.GetRenderingTime();
-            this.statusPanel.StopStatusRendering();
-            this.statusPanel.SetRenderingTime(timeStr);
-            this.settingsPanel.UpdateFractalParameters();
-
-            //this.UpdateFormFields();
+            this.FormStatusPanel.StopStatusRendering();
+            this.FormStatusPanel.SetRenderingTime(timeStr);
+            this.FormSettingsPanel.UpdateFractalParameters();
         }
 
 
@@ -170,8 +135,8 @@ namespace Fractalizer.Core.Controls
             if (isZooming && !backgroundWorker.IsBusy && isFractalRendered)
             {
                 isFractalRendered = false;
-                this.statusPanel.Show();
-                this.statusPanel.StartStatusRendering();
+                this.FormStatusPanel.Show();
+                this.FormStatusPanel.StartStatusRendering();
 
                 this.backgroundWorker.RunWorkerAsync();
             }

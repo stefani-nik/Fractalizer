@@ -35,7 +35,7 @@ namespace Fractalizer.Fractals
                 z.Sqrt();
                 z += c;
 
-                if (z.GetModulus() > FractalsConstants.RangeRadius) break;
+                if (z.GetModulus() > Constants.RangeRadius) break;
 
             } while (it < this.iterations);
 

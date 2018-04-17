@@ -16,10 +16,12 @@ namespace Fractalizer.Fractals
 
         private Mandelbrot() { }
 
+        private int iterations = 0;
+
         /// <summary>
         /// Calculates the next pixel with the equation Z(n+1) = Z(n)^2 + C
         /// </summary>
-        public override int GetNextPixel(int coordX, int coordY, int iterations, string parameters = null)
+        public override int GetNextPixel(int coordX, int coordY)
         {
 
             double xValue = this.XStartValue + this.xOffset * coordX;
@@ -37,9 +39,14 @@ namespace Fractalizer.Fractals
 
                 if (z.GetModulus() > FractalsConstants.RangeRadius) break;
 
-            } while (it < iterations);
+            } while (it < this.iterations);
 
             return it;
+        }
+
+        public override void SetCustomParameters(int it, string parameters = null)
+        {
+            this.iterations = it;
         }
 
     }

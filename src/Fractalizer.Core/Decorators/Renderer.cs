@@ -62,6 +62,7 @@ namespace Fractalizer.Core.Decorators
            
             this.renderTimer.Start();
             this.palette = ColorUtility.LoadPalette(baseColor);
+            this.strategy.SetCustomParameters(iterations, fractalParams);
 
             // If the points are not empty the fractal is zoom and adjustment of the parameters is needed
             if (start != Point.Empty && end != Point.Empty)
@@ -91,7 +92,7 @@ namespace Fractalizer.Core.Decorators
                 {
                     int index = ((y * width) + x) * bytesPerPixel;
 
-                    int iter = strategy.GetNextPixel(x, y, iterations, fractalParams);
+                    int iter = strategy.GetNextPixel(x, y);
                     Color pixelColor = iter == iterations ? Color.White : palette[iter % palette.Count];
 
                     pixels[index + 0] = pixelColor.B;

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fractalizer.Core.Contracts;
 
@@ -14,14 +7,26 @@ namespace Fractalizer.Core.Controls
     public partial class NewtonSettingsPanel : UserControl, ICustomSettingsPanel
     {
         public string Params { get; set; }
+
         public NewtonSettingsPanel()
         {
             InitializeComponent();
+            AdjustParams();
         }
 
         public string GetParameters()
         {
-            return String.Empty;
+            return this.newtonEquationComboBox.SelectedItem.ToString();
+        }
+
+        private void AdjustParams()
+        {
+            this.Params = this.newtonEquationComboBox.SelectedItem.ToString();
+        }
+
+        private void newtonEquationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AdjustParams();
         }
     }
 }

@@ -16,14 +16,16 @@ namespace Fractalizer.Fractals
 
         private Julia() { }
 
+        private ComplexPoint complexPoint = default(ComplexPoint);
+        private int iterations = 0;
 
-        public override int GetNextPixel(int coordX, int coordY, int iterations, string parameters = null)
+        public override int GetNextPixel(int coordX, int coordY)
         {
 
             double xValue = this.XStartValue + this.xOffset*coordX;
             double yValue = this.YStartValue + this.yOffset*coordY;
 
-            ComplexPoint c = ComplexPoint.GetPointFromString(parameters);
+            ComplexPoint c = this.complexPoint;
             ComplexPoint z = new ComplexPoint(xValue, yValue);
 
             int it = 0;
@@ -35,9 +37,15 @@ namespace Fractalizer.Fractals
 
                 if (z.GetModulus() > FractalsConstants.RangeRadius) break;
 
-            } while (it < iterations);
+            } while (it < this.iterations);
 
             return it;
+        }
+
+        public override void SetCustomParameters(int it, string parameters = null)
+        {
+            this.iterations = it;
+            this.complexPoint = ComplexPoint.GetPointFromString(parameters);
         }
 
     }

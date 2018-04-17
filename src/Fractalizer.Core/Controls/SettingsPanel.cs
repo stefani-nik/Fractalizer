@@ -44,6 +44,7 @@ namespace Fractalizer.Core.Controls
                               .Trim();
             Color baseColor = this.colorsPanel1.GetBaseColor();
 
+            if(activeSettinsPanel != null)
             this.fractalParameters = this.activeSettinsPanel.Params;
 
 

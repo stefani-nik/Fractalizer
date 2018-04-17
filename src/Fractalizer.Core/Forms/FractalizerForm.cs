@@ -23,7 +23,8 @@ namespace Fractalizer.Core.Forms
             this.statusPanel = new StatusPanel();
             this.fractalPicturePanel = new FractalPicturePanel(this.statusPanel);
             this.settingsPanel = new SettingsPanel(this.fractalPicturePanel);
-            InitializeComponent();
+            this.fractalPicturePanel.settingsPanel = this.settingsPanel;
+             InitializeComponent();
             this.Controls.Add(fractalPicturePanel);
             this.Controls.Add(settingsPanel);
             this.Controls.Add(statusPanel);

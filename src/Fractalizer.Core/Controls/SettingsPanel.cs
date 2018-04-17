@@ -20,7 +20,7 @@ namespace Fractalizer.Core.Controls
             this.fractalPicturePanel = frPicPanel;
 
             InitializeComponent();
-            this.SetFractalParameters();
+            this.UpdateFractalParameters();
 
             this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
@@ -49,7 +49,7 @@ namespace Fractalizer.Core.Controls
 
             this.fractalPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
 
-            this.SetFractalParameters();
+            this.UpdateFractalParameters();
 
         }
 
@@ -89,7 +89,7 @@ namespace Fractalizer.Core.Controls
             this.newtonSettingsPanel.Hide();
         }
 
-        private void SetFractalParameters()
+        public void UpdateFractalParameters()
         {
             var currentParams = this.fractalPicturePanel.GetFractalParameters();
 
@@ -108,7 +108,7 @@ namespace Fractalizer.Core.Controls
                               .Trim();
             this.ShowSettingsPanel(selected);
             this.fractalPicturePanel.SetStrategy(selected);
-            this.SetFractalParameters();
+            this.UpdateFractalParameters();
         }
     }
 }

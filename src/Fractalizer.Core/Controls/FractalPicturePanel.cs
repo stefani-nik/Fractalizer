@@ -32,6 +32,8 @@ namespace Fractalizer.Core.Controls
         private readonly IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
         private readonly Dictionary<string, IFractalStrategy> strategies;
+
+        public SettingsPanel settingsPanel { get; set; }
         
 
         public FractalPicturePanel(StatusPanel statPanel)
@@ -69,7 +71,8 @@ namespace Fractalizer.Core.Controls
                 backgroundWorker.RunWorkerAsync();
             }
 
-            // var settingsPanel = Controls.Find("SettingsPanel",true);
+             
+           
         }
 
         //public async void RenderFractal(int it, Color color, string parameters)
@@ -146,6 +149,7 @@ namespace Fractalizer.Core.Controls
             string timeStr = renderer.GetRenderingTime();
             this.statusPanel.StopStatusRendering();
             this.statusPanel.SetRenderingTime(timeStr);
+            this.settingsPanel.UpdateFractalParameters();
 
             //this.UpdateFormFields();
         }

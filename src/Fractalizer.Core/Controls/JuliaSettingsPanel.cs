@@ -18,14 +18,16 @@ namespace Fractalizer.Core.Controls
             return this.juliaComplexNumberComboBox.SelectedItem.ToString();
         }
 
-        private void juliaComplexNumberComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            AdjustParams();
-        }
-
         private void AdjustParams()
         {
             this.Params = this.juliaComplexNumberComboBox.SelectedItem.ToString();
         }
+
+        #region EventHandlers
+        private void juliaComplexNumberComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            AdjustParams();
+        }
+        #endregion
     }
 }

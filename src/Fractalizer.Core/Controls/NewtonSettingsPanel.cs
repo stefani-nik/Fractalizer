@@ -24,9 +24,11 @@ namespace Fractalizer.Core.Controls
             this.Params = this.newtonEquationComboBox.SelectedItem.ToString();
         }
 
+        #region EventHandlers
         private void newtonEquationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             AdjustParams();
         }
+        #endregion
     }
 }

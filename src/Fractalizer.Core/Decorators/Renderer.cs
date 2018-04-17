@@ -1,21 +1,14 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Fractalizer.Common;
 using Fractalizer.Common.Contracts;
 using Fractalizer.Core.Contracts;
-using Fractalizer.Core.Controls;
-using Fractalizer.Core.Forms;
-using Fractalizer.Fractals.Contracts;
 using Fractalizer.Strategies.Contracts;
 
 namespace Fractalizer.Core.Decorators

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Fractalizer.Core.Controls
 {
@@ -33,23 +25,6 @@ namespace Fractalizer.Core.Controls
             this.lblRenderingTime.Hide();
             this.lblTime.Hide();
         }
-
-        //public void StopStatusRendering()
-        //{
-        //    this.renderingProgressSpinner.Invoke(new Action(() => { renderingProgressSpinner.Hide(); }));
-        //    this.lblRendering.Invoke(new Action(() => { lblRendering.Hide(); }));
-        //    this.lblRenderingTime.Invoke(new Action(() => { lblRenderingTime.Show(); }));
-        //    this.lblTime.Invoke(new Action(() => { renderingProgressSpinner.Show(); }));
-        //}
-
-        //public void StartStatusRendering()
-        //{
-        //    this.renderingProgressSpinner.Invoke(new Action(() => { renderingProgressSpinner.Show(); }));
-        //    this.lblRendering.Invoke(new Action(() => { lblRendering.Show(); }));
-        //    this.lblRenderingTime.Invoke(new Action(() => { lblRenderingTime.Hide(); }));
-        //    this.lblTime.Invoke(new Action(() => { renderingProgressSpinner.Hide(); }));
-        //}
-
 
         public void SetRenderingTime(string time)
         {

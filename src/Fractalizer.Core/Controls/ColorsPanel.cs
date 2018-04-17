@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using MetroFramework.Controls;
 
@@ -11,14 +10,6 @@ namespace Fractalizer.Core.Controls
         public ColorsPanel()
         {
             InitializeComponent();
-        }
-
-        private void btnColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.btnShowColor.BackColor = colorDialog.Color;
-            }
         }
 
         public Color GetBaseColor()
@@ -52,5 +43,15 @@ namespace Fractalizer.Core.Controls
             }
             
         }
+
+        #region EventHandlers
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.btnShowColor.BackColor = colorDialog.Color;
+            }
+        }
+        #endregion
     }
 }

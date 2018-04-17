@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 using MetroFramework.Controls;
 using System.Collections.Generic;
@@ -11,9 +10,9 @@ namespace Fractalizer.Core.Controls
 {
     public partial class SettingsPanel : MetroUserControl
     {
-        private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels ;
+        private readonly Dictionary<string, ICustomSettingsPanel> settingsPanels;
         private ICustomSettingsPanel activeSettingsPanel;
-        private string fractalParameters = null;
+        private string fractalParameters;
 
         public FractalPicturePanel FormPicturePanel { get; set; }
 
@@ -32,56 +31,13 @@ namespace Fractalizer.Core.Controls
             this.btnRender.Click += new EventHandler(btnRender_Click);
         }
 
-        private void SettingsPanel_Load(object sender, EventArgs e)
+       
+
+        private void ShowSettingsPanels(string fractal)
         {
-            this.HideSettingsPanels();
-        }
-
-        private void btnRender_Click(object sender, EventArgs e)
-        { 
-
-            Color baseColor = this.colorsPanel.IsColorful() ? Color.Empty : this.colorsPanel.GetBaseColor();
-            int iterations = this.iterationsTrackBar.Value;
-                                    
-            if(activeSettingsPanel != null)
-            this.fractalParameters = this.activeSettingsPanel.Params;
-
-            this.FormPicturePanel.SetDefaultParameters();
-
-            this.FormPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
-
-            this.UpdateFractalParameters();
-
-        }
-
-        //TODO: FIX
-        private void iterationsTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-            this.iterationsToolTip.SetToolTip(iterationsTrackBar, iterationsTrackBar.Value.ToString());
-        }
-
-        private void iterationsToolTip_Draw(object sender, System.Windows.Forms.DrawToolTipEventArgs e)
-        {
-            Font f = new Font("Arial", 16.0f);
-            e.DrawBackground();
-            e.DrawBorder();     
-            e.Graphics.DrawString(e.ToolTipText, f, Brushes.White, new PointF(2, 2));
-        }
-
-        private void iterationsToolTip_Popup(object sender, System.Windows.Forms.PopupEventArgs e)
-        {
-            e.ToolTipSize = TextRenderer.MeasureText(iterationsTrackBar.Value.ToString(), new Font("Arial", 16.0f));
-        }
-
-
-        private void ShowSettingsPanel(string fractal)
-        {
-            if(settingsPanels != null && settingsPanels.ContainsKey(fractal))
-            {
-                this.activeSettingsPanel = settingsPanels[fractal];
-                this.activeSettingsPanel.Show();
-            }
-            
+            if (settingsPanels == null || !settingsPanels.ContainsKey(fractal)) return;
+            this.activeSettingsPanel = settingsPanels[fractal];
+            this.activeSettingsPanel.Show();
         }
 
         private void HideSettingsPanels()
@@ -111,11 +67,9 @@ namespace Fractalizer.Core.Controls
                               .Split(' ')[0]
                               .Trim();
 
-            this.ShowSettingsPanel(selected);
+            this.ShowSettingsPanels(selected);
 
             this.FormPicturePanel?.SetStrategy(selected);
-
-            //this.UpdateFractalParameters();
         }
 
         private void SetDefaultParameters()
@@ -126,5 +80,49 @@ namespace Fractalizer.Core.Controls
             this.txtBoxYrange.Text = Constants.YRange.ToString();
            
         }
+
+        #region EventHandlers
+
+        private void SettingsPanel_Load(object sender, EventArgs e)
+        {
+            this.HideSettingsPanels();
+        }
+
+        private void btnRender_Click(object sender, EventArgs e)
+        {
+
+            Color baseColor = this.colorsPanel.IsColorful() ? Color.Empty : this.colorsPanel.GetBaseColor();
+
+            int iterations = this.iterationsTrackBar.Value;
+
+            if (activeSettingsPanel != null)
+                this.fractalParameters = this.activeSettingsPanel.Params;
+
+            this.FormPicturePanel.SetDefaultParameters();
+            this.FormPicturePanel.RenderFractal(iterations, baseColor, fractalParameters);
+
+        }
+
+
+        private void iterationsTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            this.iterationsToolTip.SetToolTip(iterationsTrackBar, iterationsTrackBar.Value.ToString());
+        }
+
+        private void iterationsToolTip_Draw(object sender, System.Windows.Forms.DrawToolTipEventArgs e)
+        {
+            Font f = new Font("Arial", 16.0f);
+            e.DrawBackground();
+            e.DrawBorder();
+            e.Graphics.DrawString(e.ToolTipText, f, Brushes.White, new PointF(2, 2));
+        }
+
+        private void iterationsToolTip_Popup(object sender, System.Windows.Forms.PopupEventArgs e)
+        {
+            e.ToolTipSize = TextRenderer.MeasureText(iterationsTrackBar.Value.ToString(), new Font("Arial", 16.0f));
+        }
+
+        #endregion
+
     }
 }

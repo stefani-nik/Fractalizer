@@ -14,16 +14,17 @@ namespace Fractalizer.Core.Controls
     public partial class FractalPicturePanel : MetroUserControl
     {
 
+        private string fractal = Constants.DefaultFractal;
         private Point zoomStart = Point.Empty;
         private Point zoomEnd = Point.Empty;
         private Point checkZoomPoint = Point.Empty;
         private Rectangle zoomRectangle;
-        private bool isZooming = false;
-        private bool isFractalRendered = false;
-        private Color baseColor = Color.Black;
-        private string fractalParameters = null;
-        private int iterations = 0;
-        private string fractal = Constants.DefaultFractal;
+        private bool isZooming;
+        private bool isFractalRendered;
+        private Color baseColor;
+        private string fractalParameters;
+        private int iterations;
+        
 
         private readonly IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
@@ -36,8 +37,10 @@ namespace Fractalizer.Core.Controls
         public FractalPicturePanel()
         {
             InitializeComponent();
+
             this.backgroundWorker = new BackgroundWorker();
             this.InitializeBackgroundWorker();
+
             this.fractalImg.MouseDown += new MouseEventHandler(picBox_MouseDown);
             this.fractalImg.MouseUp += new MouseEventHandler(picBox_MouseUp);
             this.fractalImg.MouseMove += new MouseEventHandler(picBox_MouseMove);
@@ -95,6 +98,9 @@ namespace Fractalizer.Core.Controls
             return c.ClientRectangle.Contains(c.PointToClient(fractalImg.PointToScreen(checkZoomPoint)));
         }
 
+
+        #region BackgroundWorker Methods
+
         private void InitializeBackgroundWorker()
         {
             this.backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
@@ -104,7 +110,7 @@ namespace Fractalizer.Core.Controls
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations,baseColor, fractalParameters);
+            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations, baseColor, fractalParameters);
         }
 
         private void backgroundWorker_RunWorkerCompleted(
@@ -119,6 +125,14 @@ namespace Fractalizer.Core.Controls
             this.FormSettingsPanel.UpdateFractalParameters();
         }
 
+        #endregion
+
+        #region EventHandlers
+
+
+        /* 
+              Mouse Events
+        */
 
         private void picBox_MouseDown(object sender, MouseEventArgs e)
         {
@@ -167,6 +181,7 @@ namespace Fractalizer.Core.Controls
                 ControlPaint.DrawReversibleFrame(zoomRectangle, this.BackColor, FrameStyle.Dashed);
             }
         }
+        #endregion
 
     }
 }

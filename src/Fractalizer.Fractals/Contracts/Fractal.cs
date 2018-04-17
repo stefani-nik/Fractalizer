@@ -6,13 +6,13 @@ namespace Fractalizer.Fractals.Contracts
 {
     public abstract class Fractal
     {
-        public double XStartValue { get; private set; } = Constants.StartValueX;
+        public double XStartValue { get; private set; }
 
-        public double YStartValue { get; private set; } = Constants.StartValueY;
+        public double YStartValue { get; private set; }
 
-        public double XRange { get; private set; } = Constants.XRange;
+        public double XRange { get; private set; }
 
-        public double YRange { get; private set; } = Constants.YRange;
+        public double YRange { get; private set; }
 
         protected double xOffset = Constants.StartOffsetX;
         protected double yOffset = Constants.StartOffsetY;

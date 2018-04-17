@@ -42,6 +42,10 @@
   <ItemGroup>
     <Compile Include="Contracts\IFractalStrategy.cs" />
     <Compile Include="Contracts\INewtonEquationStategy.cs" />
+    <Compile Include="Newton3DegreeStrategy_0Z.cs" />
+    <Compile Include="Newton3DegreeStrategy_2Z.cs" />
+    <Compile Include="Newton3DegreeStrategy.cs" />
+    <Compile Include="Newton6DegreeStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,6 @@ namespace Fractalizer.Strategies.Contracts
 {
     public interface INewtonEquationStategy
     {
-        ComplexPoint CalculateNextPoint();
+        ComplexPoint CalculateNextPoint(ComplexPoint z);
     }
 }

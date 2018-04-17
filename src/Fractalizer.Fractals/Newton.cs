@@ -35,25 +35,12 @@ namespace Fractalizer.Fractals
                 while (it < iterations && z1.GetModulusSquared() > 0.00000001)
                 {
 
-                    //z1 = ComplexPoint.Pow(z, 3) - (double)1;
-                    //dz = 3 * ComplexPoint.Pow(z, 2);
-                    //ComplexPoint temp = z1 / dz;
-                    //z -= temp;
-
-                    //z1 = ComplexPoint.Pow(z, 3) - (double)2;
-                    //dz = 3 * ComplexPoint.Pow(z, 2);
-                    //ComplexPoint temp = z1 / dz;
-                    //z -= temp;
-
                     //z1 = ComplexPoint.Pow(z, 6) + ComplexPoint.Pow(z,3) - 1;
                     //dz = 6* ComplexPoint.Pow(z,5) + 3 * ComplexPoint.Pow(z, 2);
                     //ComplexPoint temp = z1 / dz;
                     //z -= temp;
 
-                    //z1 = ComplexPoint.Pow(z, 3) - (2 * z) + 2.0;
-                    //dz = 3 * ComplexPoint.Pow(z, 2) - 2.0;
-                    //ComplexPoint temp = z1 / dz;
-                    //z -= temp;
+                    
 
                     it++;
                 }

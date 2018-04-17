@@ -41,7 +41,6 @@ namespace Fractalizer.Core.Controls
             this.fractalImg.BackColor = System.Drawing.Color.Transparent;
             this.fractalImg.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fractalImg.BackgroundImage")));
             this.fractalImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.fractalImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fractalImg.Location = new System.Drawing.Point(-1, -1);
             this.fractalImg.Name = "fractalImg";
             this.fractalImg.Size = new System.Drawing.Size(900, 450);

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fractalizer.Common;
+using Fractalizer.Common.Contracts;
 using Fractalizer.Core.Contracts;
 using Fractalizer.Core.Controls;
 using Fractalizer.Core.Forms;
@@ -25,10 +26,10 @@ namespace Fractalizer.Core.Decorators
     /// </summary>
     public class Renderer : IRenderer
     {
-
-        private List<Color> palette;
         private readonly Stopwatch renderTimer;
         private IFractalStrategy strategy;
+
+        private readonly IColorManager colorManager;
 
         private static readonly Lazy<Renderer> instance =
                                new Lazy<Renderer>(() => new Renderer());
@@ -52,6 +53,7 @@ namespace Fractalizer.Core.Decorators
         {
             this.MyBitmap = new Bitmap(Constants.PicturePanelWidth, Constants.PicturePanelHeight);
             this.renderTimer = new Stopwatch();
+            this.colorManager = new ColorManager();
         }
 
 
@@ -62,7 +64,10 @@ namespace Fractalizer.Core.Decorators
         {
            
             this.renderTimer.Start();
-            this.palette = baseColor == Color.Empty ? ColorsManager.LoadPalette() : ColorUtility.LoadPalette(baseColor).ToList();
+            List<Color> palette = baseColor == Color.Empty 
+                                ? colorManager.LoadColorfulPalette().ToList() 
+                                : colorManager.LoadSingleColorPalette(baseColor).ToList();
+
             this.strategy.SetCustomParameters(iterations, fractalParams);
 
             // If the points are not empty the fractal is zoom and adjustment of the parameters is needed

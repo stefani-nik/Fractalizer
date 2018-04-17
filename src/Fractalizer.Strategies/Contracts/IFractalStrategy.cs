@@ -9,5 +9,6 @@ namespace Fractalizer.Strategies.Contracts
         Dictionary<string, string> GetFractalParameters();
         void AdjustParameters(int zoomStartX, int zoomStartY, int zoomEndX, int zoomEndY);
         void SetCustomParameters(int it, string parameters = null);
+        void SetDefaultParameters();
     }
 }

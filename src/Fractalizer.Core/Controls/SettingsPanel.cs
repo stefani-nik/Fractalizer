@@ -20,6 +20,7 @@ namespace Fractalizer.Core.Controls
             this.fractalPicturePanel = frPicPanel;
 
             InitializeComponent();
+            this.SetFractalParameters();
 
             this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
@@ -43,6 +44,8 @@ namespace Fractalizer.Core.Controls
                                     
             if(activeSettingsPanel != null)
             this.fractalParameters = this.activeSettingsPanel.Params;
+
+            this.fractalPicturePanel.SetDefaultParameters();
 
             this.fractalPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
 
@@ -72,7 +75,7 @@ namespace Fractalizer.Core.Controls
 
         private void ShowSettingsPanel(string fractal)
         {
-            if(settingsPanels.ContainsKey(fractal))
+            if(settingsPanels != null && settingsPanels.ContainsKey(fractal))
             {
                 this.activeSettingsPanel = settingsPanels[fractal];
                 this.activeSettingsPanel.Show();

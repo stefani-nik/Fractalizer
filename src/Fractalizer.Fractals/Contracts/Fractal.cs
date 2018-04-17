@@ -51,6 +51,15 @@ namespace Fractalizer.Fractals.Contracts
             return parameters;
         }
 
+        public void SetDefaultParameters()
+        {
+            this.XStartValue = FractalsConstants.StartValueX;
+            this.YStartValue = FractalsConstants.StartValueY;
+            this.XRange = FractalsConstants.XRange;
+            this.YRange = FractalsConstants.YRange;
+            this.xOffset = FractalsConstants.StartOffsetX;
+            this.yOffset = FractalsConstants.StartOffsetY;
+        }
 
         public abstract  int GetNextPixel(int coordX, int coordY);
 

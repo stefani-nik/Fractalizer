@@ -67,12 +67,13 @@ namespace Fractalizer.Core.Controls
             this.fractalComboBox.Tag = "";
             this.fractalComboBox.UseSelectable = true;
             this.fractalComboBox.SelectedIndexChanged += new System.EventHandler(this.fractalComboBox_SelectedIndexChanged);
+            this.fractalComboBox.SelectedIndex = 0;
             // 
             // iterationsTrackBar
             // 
             this.iterationsTrackBar.BackColor = System.Drawing.Color.Transparent;
             this.iterationsTrackBar.Location = new System.Drawing.Point(590, 30);
-            this.iterationsTrackBar.Maximum = 500;
+            this.iterationsTrackBar.Maximum = 3000;
             this.iterationsTrackBar.Name = "iterationsTrackBar";
             this.iterationsTrackBar.Size = new System.Drawing.Size(198, 23);
             this.iterationsTrackBar.TabIndex = 7;

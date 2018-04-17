@@ -101,7 +101,14 @@ namespace Fractalizer.Core.Controls
 
         public Dictionary<string, string> GetFractalParameters()
         {
-            return strategies[this.fractal].GetFractalParameters();
+            return this.strategies[this.fractal].GetFractalParameters();
+        }
+
+        public void SetDefaultParameters()
+        {
+            this.strategies[this.fractal].SetDefaultParameters();
+            this.zoomStart = Point.Empty;
+            this.zoomEnd = Point.Empty;
         }
 
         public void SetStrategy(string fractalName)
@@ -159,6 +166,9 @@ namespace Fractalizer.Core.Controls
             if (isZooming && !backgroundWorker.IsBusy && isFractalRendered)
             {
                 isFractalRendered = false;
+                this.statusPanel.Show();
+                this.statusPanel.StartStatusRendering();
+
                 this.backgroundWorker.RunWorkerAsync();
             }
 

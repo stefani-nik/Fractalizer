@@ -6,38 +6,39 @@ using Fractalizer.Strategies.Contracts;
 
 namespace Fractalizer.Fractals
 {
- 
+
     public sealed class Newton : Fractal, IFractalStrategy
     {
 
         private static readonly Lazy<Newton> instance =
                                 new Lazy<Newton>(() => new Newton());
 
-        public static Newton Instance => instance.Value;
-
         private Newton() { }
 
         private int iterations = 0;
-        private readonly IStrategiesManager strategiesManager = new StrategiesManager();
+        private readonly INewtonStrategiesManager strategiesManager = new NewtonStrategiesManager();
         private INewtonEquationStrategy equationStrategy;
+
+        public static Newton Instance => instance.Value;
+
 
         public override int GetNextPixel(int coordX, int coordY)
         {
 
             double xValue = this.XStartValue + this.xOffset * coordX;
-            double yValue = this.YStartValue + this.yOffset*coordY;
+            double yValue = this.YStartValue + this.yOffset * coordY;
 
 
             ComplexPoint z = new ComplexPoint(xValue, yValue);
-            ComplexPoint z1 = new ComplexPoint(1,0);
-           // ComplexPoint dz = new ComplexPoint(1,0);
+            ComplexPoint z1 = new ComplexPoint(1, 0);
 
             int it = 0;
 
+            double tolerance = 0.000000001;
 
-            if (xValue != 0 || yValue != 0)
+            if (Math.Abs(xValue) > tolerance || Math.Abs(yValue) > tolerance)
             {
-                while (it < iterations && z1.GetModulusSquared() > 0.00000001)
+                while (it < iterations && z1.GetModulusSquared() > 0.000000001)
                 {
 
                     Tuple<ComplexPoint, ComplexPoint> strategyResultTuple
@@ -45,19 +46,10 @@ namespace Fractalizer.Fractals
 
                     z = strategyResultTuple.Item1;
                     z1 = strategyResultTuple.Item2;
-                   
-                    
-                    //z1 = ComplexPoint.Pow(z, 6) + ComplexPoint.Pow(z,3) - 1;
-                    //dz = 6* ComplexPoint.Pow(z,5) + 3 * ComplexPoint.Pow(z, 2);
-                    //ComplexPoint temp = z1 / dz;
-                    //z -= temp;
-
-                    
-
                     it++;
                 }
             }
-               
+
 
             return it;
         }

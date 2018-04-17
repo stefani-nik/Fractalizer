@@ -12,11 +12,11 @@ namespace Fractalizer.Fractals
         private static readonly Lazy<Mandelbrot> instance = 
                                 new Lazy<Mandelbrot>(() => new Mandelbrot());
 
-        public static Mandelbrot Instance => instance.Value;
-
         private Mandelbrot() { }
-
+ 
         private int iterations = 0;
+
+        public static Mandelbrot Instance => instance.Value;
 
         /// <summary>
         /// Calculates the next pixel with the equation Z(n+1) = Z(n)^2 + C

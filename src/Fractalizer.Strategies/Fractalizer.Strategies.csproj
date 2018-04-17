@@ -46,12 +46,12 @@
   <ItemGroup>
     <Compile Include="Contracts\IFractalStrategy.cs" />
     <Compile Include="Contracts\INewtonEquationStrategy.cs" />
-    <Compile Include="Contracts\IStrategiesManager.cs" />
-    <Compile Include="Newton3DegreeStrategy_2Z.cs" />
-    <Compile Include="Newton3DegreeStrategy.cs" />
-    <Compile Include="Newton6DegreeStrategy.cs" />
+    <Compile Include="Contracts\INewtonStrategiesManager.cs" />
+    <Compile Include="NewtonStrategies\Newton3DegreeStrategy_2Z.cs" />
+    <Compile Include="NewtonStrategies\Newton3DegreeStrategy.cs" />
+    <Compile Include="NewtonStrategies\Newton6DegreeStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StrategiesManager.cs" />
+    <Compile Include="NewtonStrategiesManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fractalizer.Common\Fractalizer.Common.csproj">

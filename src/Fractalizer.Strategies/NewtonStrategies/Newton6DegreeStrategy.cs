@@ -2,8 +2,9 @@
 using Fractalizer.Common;
 using Fractalizer.Strategies.Contracts;
 
-namespace Fractalizer.Strategies
+namespace Fractalizer.Strategies.NewtonStrategies
 {
+    // Solves the equation p(z) = z^6 + 3z - 1
     public class Newton6DegreeStrategy : INewtonEquationStrategy
     {
         public Tuple<ComplexPoint, ComplexPoint> CalculateNextPoint(ComplexPoint z)

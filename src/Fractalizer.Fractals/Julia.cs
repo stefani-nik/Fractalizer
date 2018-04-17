@@ -12,12 +12,13 @@ namespace Fractalizer.Fractals
         private static readonly Lazy<Julia> instance =
                                 new Lazy<Julia>(() => new Julia());
 
-        public static Julia Instance => instance.Value;
-
         private Julia() { }
 
         private ComplexPoint complexPoint = default(ComplexPoint);
         private int iterations = 0;
+
+        public static Julia Instance => instance.Value;
+
 
         public override int GetNextPixel(int coordX, int coordY)
         {

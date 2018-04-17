@@ -1,6 +1,6 @@
 ﻿namespace Fractalizer.Strategies.Contracts
 {
-    public interface IStrategiesManager
+    public interface INewtonStrategiesManager
     {
         INewtonEquationStrategy GetNewtonEquationStategy(string equationString);
     }

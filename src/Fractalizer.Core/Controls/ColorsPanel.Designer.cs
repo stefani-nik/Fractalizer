@@ -33,6 +33,7 @@ namespace Fractalizer.Core.Controls
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.btnColor = new System.Windows.Forms.Button();
             this.btnShowColor = new System.Windows.Forms.Button();
+            this.colorfulCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // colorDialog
@@ -57,6 +58,7 @@ namespace Fractalizer.Core.Controls
             // btnShowColor
             // 
             this.btnShowColor.BackColor = System.Drawing.Color.Red;
+            this.btnShowColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnShowColor.Enabled = false;
             this.btnShowColor.Location = new System.Drawing.Point(117, 4);
             this.btnShowColor.Name = "btnShowColor";
@@ -64,16 +66,30 @@ namespace Fractalizer.Core.Controls
             this.btnShowColor.TabIndex = 1;
             this.btnShowColor.UseVisualStyleBackColor = false;
             // 
+            // colorfulCheckBox
+            // 
+            this.colorfulCheckBox.AutoSize = true;
+            this.colorfulCheckBox.Location = new System.Drawing.Point(170, 10);
+            this.colorfulCheckBox.Name = "colorfulCheckBox";
+            this.colorfulCheckBox.Size = new System.Drawing.Size(94, 15);
+            this.colorfulCheckBox.TabIndex = 2;
+            this.colorfulCheckBox.Text = "Draw colorful";
+            this.colorfulCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.colorfulCheckBox.UseSelectable = true;
+            this.colorfulCheckBox.CheckStateChanged += new System.EventHandler(this.colorfulCheckBox_CheckStateChanged);
+            // 
             // ColorsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Controls.Add(this.colorfulCheckBox);
             this.Controls.Add(this.btnShowColor);
             this.Controls.Add(this.btnColor);
             this.Name = "ColorsPanel";
-            this.Size = new System.Drawing.Size(155, 36);
+            this.Size = new System.Drawing.Size(267, 36);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +98,6 @@ namespace Fractalizer.Core.Controls
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.Button btnShowColor;
+        private MetroFramework.Controls.MetroCheckBox colorfulCheckBox;
     }
 }

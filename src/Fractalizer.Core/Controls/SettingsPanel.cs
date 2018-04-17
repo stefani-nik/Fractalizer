@@ -25,7 +25,7 @@ namespace Fractalizer.Core.Controls
             this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
                 { "Julia" , this.juliaSettingsPanel },
-                { "Newton", this.newtonSettingsPanel1 }
+                { "Newton", this.newtonSettingsPanel }
             };
 
             this.btnRender.Click += new EventHandler(btnRender_Click);
@@ -42,8 +42,9 @@ namespace Fractalizer.Core.Controls
                               .ToString()
                               .Split(' ')[0]
                               .Trim();
-            Color baseColor = this.colorsPanel1.GetBaseColor();
 
+            Color baseColor = this.colorsPanel.IsColorful() ? Color.Empty : this.colorsPanel.GetBaseColor();
+                                    
             if(activeSettinsPanel != null)
             this.fractalParameters = this.activeSettinsPanel.Params;
 
@@ -98,7 +99,7 @@ namespace Fractalizer.Core.Controls
         {
            // this.mandelbrotSettingsPanel.Hide();
             this.juliaSettingsPanel.Hide();
-            this.newtonSettingsPanel1.Hide();
+            this.newtonSettingsPanel.Hide();
         }
 
         private void fractalComboBox_SelectedIndexChanged(object sender, EventArgs e)

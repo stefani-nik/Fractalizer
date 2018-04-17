@@ -61,7 +61,7 @@ namespace Fractalizer.Core.Decorators
         {
            
             this.renderTimer.Start();
-            this.palette = ColorUtility.LoadPalette(baseColor);
+            this.palette = baseColor == Color.Empty ? ColorsManager.LoadPalette() : ColorUtility.LoadPalette(baseColor);
             this.strategy.SetCustomParameters(iterations, fractalParams);
 
             // If the points are not empty the fractal is zoom and adjustment of the parameters is needed

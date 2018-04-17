@@ -66,12 +66,6 @@
     <Compile Include="Controls\JuliaSettingsPanel.Designer.cs">
       <DependentUpon>JuliaSettingsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MandelbrotSettingsPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\MandelbrotSettingsPanel.Designer.cs">
-      <DependentUpon>MandelbrotSettingsPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\NewtonSettingsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,9 +101,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\JuliaSettingsPanel.resx">
       <DependentUpon>JuliaSettingsPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MandelbrotSettingsPanel.resx">
-      <DependentUpon>MandelbrotSettingsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NewtonSettingsPanel.resx">
       <DependentUpon>NewtonSettingsPanel.cs</DependentUpon>
@@ -164,7 +155,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <EmbeddedResource Include="Assets\colorful-btn.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

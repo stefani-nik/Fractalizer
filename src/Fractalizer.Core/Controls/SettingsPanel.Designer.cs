@@ -46,9 +46,9 @@ namespace Fractalizer.Core.Controls
             this.txtBoxXrange = new MetroFramework.Controls.MetroTextBox();
             this.lblYrange = new MetroFramework.Controls.MetroLabel();
             this.txtBoxYrange = new MetroFramework.Controls.MetroTextBox();
+            this.colorsPanel = new Fractalizer.Core.Controls.ColorsPanel();
+            this.newtonSettingsPanel = new Fractalizer.Core.Controls.NewtonSettingsPanel();
             this.juliaSettingsPanel = new Fractalizer.Core.Controls.JuliaSettingsPanel();
-            this.colorsPanel1 = new Fractalizer.Core.Controls.ColorsPanel();
-            this.newtonSettingsPanel1 = new Fractalizer.Core.Controls.NewtonSettingsPanel();
             this.SuspendLayout();
             // 
             // fractalComboBox
@@ -67,7 +67,6 @@ namespace Fractalizer.Core.Controls
             this.fractalComboBox.Tag = "";
             this.fractalComboBox.UseSelectable = true;
             this.fractalComboBox.SelectedIndexChanged += new System.EventHandler(this.fractalComboBox_SelectedIndexChanged);
-            //this.fractalComboBox.SelectedIndex = 0;
             // 
             // iterationsTrackBar
             // 
@@ -300,37 +299,40 @@ namespace Fractalizer.Core.Controls
             this.txtBoxYrange.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxYrange.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // colorsPanel
+            // 
+            this.colorsPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.colorsPanel.Location = new System.Drawing.Point(803, 24);
+            this.colorsPanel.Name = "colorsPanel";
+            this.colorsPanel.Size = new System.Drawing.Size(282, 36);
+            this.colorsPanel.TabIndex = 22;
+            this.colorsPanel.UseSelectable = true;
+            // 
+            // newtonSettingsPanel
+            // 
+            this.newtonSettingsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.newtonSettingsPanel.Location = new System.Drawing.Point(52, 80);
+            this.newtonSettingsPanel.Name = "newtonSettingsPanel";
+            this.newtonSettingsPanel.Params = "z^3 - 1";
+            this.newtonSettingsPanel.Size = new System.Drawing.Size(282, 29);
+            this.newtonSettingsPanel.TabIndex = 21;
+            // 
             // juliaSettingsPanel
             // 
             this.juliaSettingsPanel.BackColor = System.Drawing.Color.Transparent;
             this.juliaSettingsPanel.Location = new System.Drawing.Point(17, 74);
             this.juliaSettingsPanel.Name = "juliaSettingsPanel";
+            this.juliaSettingsPanel.Params = "0.4+0.6i";
             this.juliaSettingsPanel.Size = new System.Drawing.Size(327, 36);
             this.juliaSettingsPanel.TabIndex = 20;
-            // 
-            // colorsPanel1
-            // 
-            this.colorsPanel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.colorsPanel1.Location = new System.Drawing.Point(857, 24);
-            this.colorsPanel1.Name = "colorsPanel1";
-            this.colorsPanel1.Size = new System.Drawing.Size(157, 39);
-            this.colorsPanel1.TabIndex = 9;
-            this.colorsPanel1.UseSelectable = true;
-            // 
-            // newtonSettingsPanel1
-            // 
-            this.newtonSettingsPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.newtonSettingsPanel1.Location = new System.Drawing.Point(52, 80);
-            this.newtonSettingsPanel1.Name = "newtonSettingsPanel1";
-            this.newtonSettingsPanel1.Size = new System.Drawing.Size(282, 29);
-            this.newtonSettingsPanel1.TabIndex = 21;
             // 
             // SettingsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.Controls.Add(this.newtonSettingsPanel1);
+            this.Controls.Add(this.colorsPanel);
+            this.Controls.Add(this.newtonSettingsPanel);
             this.Controls.Add(this.juliaSettingsPanel);
             this.Controls.Add(this.txtBoxXrange);
             this.Controls.Add(this.txtBoxYvalue);
@@ -342,7 +344,6 @@ namespace Fractalizer.Core.Controls
             this.Controls.Add(this.lblXvalue);
             this.Controls.Add(this.lblIterations);
             this.Controls.Add(this.lblFractalCombo);
-            this.Controls.Add(this.colorsPanel1);
             this.Controls.Add(this.btnRender);
             this.Controls.Add(this.iterationsTrackBar);
             this.Controls.Add(this.fractalComboBox);
@@ -357,7 +358,6 @@ namespace Fractalizer.Core.Controls
         #endregion
         private MetroFramework.Controls.MetroTrackBar iterationsTrackBar;
         private MetroFramework.Controls.MetroButton btnRender;
-        private ColorsPanel colorsPanel1;
         private MetroFramework.Controls.MetroComboBox fractalComboBox;
         private MetroFramework.Controls.MetroLabel lblFractalCombo;
         private MetroFramework.Controls.MetroLabel lblIterations;
@@ -371,6 +371,7 @@ namespace Fractalizer.Core.Controls
         private MetroFramework.Controls.MetroLabel lblYrange;
         private MetroFramework.Controls.MetroTextBox txtBoxYrange;
         private JuliaSettingsPanel juliaSettingsPanel;
-        private NewtonSettingsPanel newtonSettingsPanel1;
+        private NewtonSettingsPanel newtonSettingsPanel;
+        private ColorsPanel colorsPanel;
     }
 }

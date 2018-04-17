@@ -43,7 +43,7 @@ namespace Fractalizer.Fractals.Contracts
             var parameters = new Dictionary<string, string>()
             {
                 {"XStartValue", this.XStartValue.ToString(CultureInfo.InvariantCulture)},
-                { "YStratValue", this.YStartValue.ToString(CultureInfo.InvariantCulture)},
+                { "YStartValue", this.YStartValue.ToString(CultureInfo.InvariantCulture)},
                 { "XRange", this.XRange.ToString(CultureInfo.InvariantCulture)},
                 {"YRange", this.YRange.ToString(CultureInfo.InvariantCulture) }
             };

@@ -22,7 +22,8 @@ namespace Fractalizer.Core.Controls
         private Color baseColor = Color.Black;
         private string fractalParameters = null;
         private int iterations = 0;
-        private StatusPanel statusPanel;
+        private readonly StatusPanel statusPanel;
+        private string fractal = null;
 
         private readonly IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
@@ -49,19 +50,29 @@ namespace Fractalizer.Core.Controls
         }
 
 
-        public void RenderFractal(string fractalName, int it, Color color, string parameters)
+        public void RenderFractal(int it, Color color, string parameters)
         {
-            renderer.Strategy = strategies[fractalName];
-
             this.baseColor = color;
             this.fractalParameters = parameters;
             this.iterations = it;
+           
 
             if (!this.backgroundWorker.IsBusy && renderer != null)
             {
                 this.statusPanel.Show();
                 backgroundWorker.RunWorkerAsync();
             }
+        }
+
+        public Dictionary<string, string> GetFractalParameters()
+        {
+            return strategies[this.fractal].GetFractalParameters();
+        }
+
+        public void SetStrategy(string fractalName)
+        {
+            this.fractal = fractalName;
+            renderer.Strategy = strategies[this.fractal];
         }
 
         private bool MouseIsOverPicture(Control c)

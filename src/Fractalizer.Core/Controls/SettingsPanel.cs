@@ -36,11 +36,7 @@ namespace Fractalizer.Core.Controls
         }
 
         private void btnRender_Click(object sender, EventArgs e)
-        {
-            string selected = this.fractalComboBox.SelectedItem
-                              .ToString()
-                              .Split(' ')[0]
-                              .Trim();
+        { 
 
             Color baseColor = this.colorsPanel.IsColorful() ? Color.Empty : this.colorsPanel.GetBaseColor();
             int iterations = this.iterationsTrackBar.Value;
@@ -48,7 +44,8 @@ namespace Fractalizer.Core.Controls
             if(activeSettinsPanel != null)
             this.fractalParameters = this.activeSettinsPanel.Params;
 
-            this.fractalPicturePanel.RenderFractal(selected,iterations,baseColor,fractalParameters);
+            this.fractalPicturePanel.RenderFractal(iterations,baseColor,fractalParameters);
+            this.SetFractalParameters();
 
         }
 
@@ -88,6 +85,16 @@ namespace Fractalizer.Core.Controls
             this.newtonSettingsPanel.Hide();
         }
 
+        private void SetFractalParameters()
+        {
+            var currentParams = this.fractalPicturePanel.GetFractalParameters();
+
+            this.txtBoxXvalue.Text = currentParams["XStartValue"];
+            this.txtBoxYvalue.Text = currentParams["YStartValue"];
+            this.txtBoxXrange.Text = currentParams["XRange"];
+            this.txtBoxYrange.Text = currentParams["YRange"];
+        }
+
         private void fractalComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.HideSettingsPanels();
@@ -96,6 +103,8 @@ namespace Fractalizer.Core.Controls
                               .Split(' ')[0]
                               .Trim();
             this.ShowSettingsPanel(selected);
+            this.fractalPicturePanel.SetStrategy(selected);
+            this.SetFractalParameters();
         }
     }
 }

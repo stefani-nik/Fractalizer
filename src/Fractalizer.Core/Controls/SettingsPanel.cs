@@ -17,11 +17,10 @@ namespace Fractalizer.Core.Controls
 
         public SettingsPanel(FractalPicturePanel frPicPanel)
         {
-            fractalPicturePanel = frPicPanel;
+            this.fractalPicturePanel = frPicPanel;
 
             InitializeComponent();
 
-            // this.HideSettingsPanels();
             this.settingsPanels = new Dictionary<string, ICustomSettingsPanel>
             {
                 { "Julia" , this.juliaSettingsPanel },
@@ -33,7 +32,7 @@ namespace Fractalizer.Core.Controls
 
         private void SettingsPanel_Load(object sender, EventArgs e)
         {
-            HideSettingsPanels();
+            this.HideSettingsPanels();
         }
 
         private void btnRender_Click(object sender, EventArgs e)
@@ -44,21 +43,19 @@ namespace Fractalizer.Core.Controls
                               .Trim();
 
             Color baseColor = this.colorsPanel.IsColorful() ? Color.Empty : this.colorsPanel.GetBaseColor();
+            int iterations = this.iterationsTrackBar.Value;
                                     
             if(activeSettinsPanel != null)
             this.fractalParameters = this.activeSettinsPanel.Params;
 
-
-            //HideSettingsPanels();
-            // ShowSettingsPanel(selected);
-            fractalPicturePanel.RenderFractal(selected,baseColor,fractalParameters);
+            this.fractalPicturePanel.RenderFractal(selected,iterations,baseColor,fractalParameters);
 
         }
 
         //TODO: FIX
         private void iterationsTrackBar_ValueChanged(object sender, EventArgs e)
         {
-            iterationsToolTip.SetToolTip(iterationsTrackBar, iterationsTrackBar.Value.ToString());
+            this.iterationsToolTip.SetToolTip(iterationsTrackBar, iterationsTrackBar.Value.ToString());
         }
 
         private void iterationsToolTip_Draw(object sender, System.Windows.Forms.DrawToolTipEventArgs e)
@@ -77,27 +74,16 @@ namespace Fractalizer.Core.Controls
 
         private void ShowSettingsPanel(string fractal)
         {
-
-
             if(settingsPanels.ContainsKey(fractal))
             {
                 this.activeSettinsPanel = settingsPanels[fractal];
                 this.activeSettinsPanel.Show();
             }
-
-            //string fieldName = fractal.ToLower() + "SettingsPanel";
-            //var field = this.GetType().GetField(fieldName, BindingFlags.DeclaredOnly |
-            //                                      BindingFlags.Instance |
-            //                                      BindingFlags.NonPublic).GetValue(this);
-            
-            //MethodInfo showMethod = field.GetType().GetMethod("Show");
-            //showMethod.Invoke(field, null);
             
         }
 
         private void HideSettingsPanels()
         {
-           // this.mandelbrotSettingsPanel.Hide();
             this.juliaSettingsPanel.Hide();
             this.newtonSettingsPanel.Hide();
         }

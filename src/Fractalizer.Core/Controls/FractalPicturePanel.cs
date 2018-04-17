@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 using Fractalizer.Core.Contracts;
 using Fractalizer.Core.Decorators;
+using Fractalizer.Core.Forms;
 using Fractalizer.Fractals;
-using Fractalizer.Fractals.Contracts;
 using Fractalizer.Strategies.Contracts;
 using MetroFramework.Controls;
 
@@ -23,12 +21,15 @@ namespace Fractalizer.Core.Controls
         private bool isFractalRendered = false;
         private Color baseColor = Color.Black;
         private string fractalParameters = null;
+        private int iterations = 0;
+        private StatusPanel statusPanel;
 
-        private IRenderer renderer = Renderer.Instance;
+        private readonly IRenderer renderer = Renderer.Instance;
         private readonly BackgroundWorker backgroundWorker;
         private readonly Dictionary<string, IFractalStrategy> strategies;
+        
 
-        public FractalPicturePanel()
+        public FractalPicturePanel(StatusPanel statPanel)
         {
             InitializeComponent();
             this.backgroundWorker = new BackgroundWorker();
@@ -43,31 +44,22 @@ namespace Fractalizer.Core.Controls
                     { "Julia", Julia.Instance },
                     { "Newton", Newton.Instance }
             };
-
+            this.statusPanel = statPanel;
+            this.statusPanel.Hide();
         }
 
 
-        public void RenderFractal(string fractalName, Color color, string parameters)
+        public void RenderFractal(string fractalName, int it, Color color, string parameters)
         {
-            //var assembly = AppDomain.CurrentDomain.Load("Fractalizer.Fractals");
-            //var fractalType = assembly.GetType("Fractalizer.Fractals." + fractalName);
-
-            //if (fractalType != null)
-            //{
-            //    var instance = (Fractal)fractalType
-            //        .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
-            //        .GetValue(null);
-
-            //    renderer.Fractal = instance;
-            //}
-
             renderer.Strategy = strategies[fractalName];
 
             this.baseColor = color;
             this.fractalParameters = parameters;
+            this.iterations = it;
 
             if (!this.backgroundWorker.IsBusy && renderer != null)
             {
+                this.statusPanel.Show();
                 backgroundWorker.RunWorkerAsync();
             }
         }
@@ -89,7 +81,8 @@ namespace Fractalizer.Core.Controls
         // TODO
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, 128,baseColor, fractalParameters);
+            this.statusPanel.StartStatusRendering();
+            this.fractalImg.Image = renderer.RenderFractal(zoomStart, zoomEnd, iterations,baseColor, fractalParameters);
         }
 
         private void backgroundWorker_RunWorkerCompleted(
@@ -97,7 +90,9 @@ namespace Fractalizer.Core.Controls
             RunWorkerCompletedEventArgs e)
         {
             this.isFractalRendered = true;
-            //this.lblTimer.Text = renderer.GetRenderingTime();
+            string timeStr = renderer.GetRenderingTime();
+            this.statusPanel.SetRenderingTime(timeStr);
+            this.statusPanel.StopStatusRendering();
             //this.UpdateFormFields();
         }
 

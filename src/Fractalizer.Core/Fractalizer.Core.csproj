@@ -72,6 +72,12 @@
     <Compile Include="Controls\NewtonSettingsPanel.Designer.cs">
       <DependentUpon>NewtonSettingsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\StatusPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StatusPanel.Designer.cs">
+      <DependentUpon>StatusPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FractalizerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NewtonSettingsPanel.resx">
       <DependentUpon>NewtonSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StatusPanel.resx">
+      <DependentUpon>StatusPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FractalizerForm.resx">
       <DependentUpon>FractalizerForm.cs</DependentUpon>

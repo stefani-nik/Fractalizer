@@ -33,7 +33,9 @@ namespace Fractalizer.Core.Controls
             {
                 this.btnColor.Hide();
                 this.btnShowColor.BackgroundImage = Image.FromFile(
-                                                    AppDomain.CurrentDomain.BaseDirectory + "colorful-btn.bmp");
+                                                    AppDomain.CurrentDomain.BaseDirectory
+                                                    .Replace("\\bin\\Debug\\", "")
+                                                    + "\\Assets\\colorful-btn.bmp");
             }
             else
             {

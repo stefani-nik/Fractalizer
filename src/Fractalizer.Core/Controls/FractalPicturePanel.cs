@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using Fractalizer.Common;
 using Fractalizer.Core.Contracts;
-using Fractalizer.Core.Decorators;
 using Fractalizer.Fractals;
 using Fractalizer.Strategies.Contracts;
 using MetroFramework.Controls;

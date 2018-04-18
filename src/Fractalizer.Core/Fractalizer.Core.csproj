@@ -102,7 +102,7 @@
     <Compile Include="Controls\SettingsPanel.Designer.cs">
       <DependentUpon>SettingsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Decorators\Renderer.cs" />
+    <Compile Include="Renderer.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\JuliaSettingsPanel.resx">

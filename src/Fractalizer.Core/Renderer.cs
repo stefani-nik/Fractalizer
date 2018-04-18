@@ -11,7 +11,7 @@ using Fractalizer.Common.Contracts;
 using Fractalizer.Core.Contracts;
 using Fractalizer.Strategies.Contracts;
 
-namespace Fractalizer.Core.Decorators
+namespace Fractalizer.Core
 {
     /// <summary>
     /// Class responsible for rendering the chosen fractal 

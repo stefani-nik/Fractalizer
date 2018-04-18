@@ -38,6 +38,7 @@ namespace Fractalizer.Common
             this.Re = temp;
         }
 
+        /// <returns> A n-degree of a colex point </returns>
         public static ComplexPoint Pow(ComplexPoint c, double exponent)
         {
             double x = c.Re;
@@ -57,6 +58,7 @@ namespace Fractalizer.Common
             return (double)this.Re * this.Re + this.Im * this.Im;
         }
 
+        /// <returns>A complex point from a given string</returns>
         public static ComplexPoint GetPointFromString(string input)
         {
             string[] @params = input.Split(new char[] { ' ', 'i','+', '(', ')'}
@@ -66,9 +68,11 @@ namespace Fractalizer.Common
             return c;
         }
 
-        /// <summary>
-        /// Calculates the addition of two complex numbers
-        /// </summary>
+
+        /*
+         * Operators
+         */
+
         public static ComplexPoint operator +(ComplexPoint c1, ComplexPoint c2)
         {
             return new ComplexPoint(c1.Re + c2.Re, c1.Im + c2.Im);

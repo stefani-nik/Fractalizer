@@ -22,11 +22,6 @@ namespace Fractalizer.Core.Controls
             return this.colorfulCheckBox.Checked;
         }
 
-        private void colorfulCheckBox_CheckStateChanged(object sender, EventArgs e)
-        {
-           AdjustCheckboxProperties();
-        }
-
         // Toggle color panel elements
 
         private void AdjustCheckboxProperties()
@@ -56,6 +51,12 @@ namespace Fractalizer.Core.Controls
                 this.btnShowColor.BackColor = colorDialog.Color;
             }
         }
+
+        private void colorfulCheckBox_CheckStateChanged(object sender, EventArgs e)
+        {
+            AdjustCheckboxProperties();
+        }
+
         #endregion
     }
 }

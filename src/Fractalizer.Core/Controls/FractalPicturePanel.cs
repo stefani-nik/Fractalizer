@@ -13,12 +13,15 @@ namespace Fractalizer.Core.Controls
     public partial class FractalPicturePanel : MetroUserControl
     {
 
+        #region Members
         private string fractal = Constants.DefaultFractal;
+
         private Point zoomStart = Point.Empty;
         private Point zoomEnd = Point.Empty;
         private Point checkZoomPoint = Point.Empty;
         private Rectangle zoomRectangle;
         private bool isZooming;
+
         private bool isFractalRendered;
         private Color baseColor;
         private string fractalParameters;
@@ -31,7 +34,7 @@ namespace Fractalizer.Core.Controls
 
         public SettingsPanel FormSettingsPanel { get; set; }
         public StatusPanel FormStatusPanel { get; set; }
-        
+        #endregion
 
         public FractalPicturePanel()
         {

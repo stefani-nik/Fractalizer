@@ -59,18 +59,6 @@ namespace Fractalizer.Core.Controls
           
         }
 
-        private void fractalComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.HideSettingsPanels();
-            string selected = this.fractalComboBox.SelectedItem
-                              .ToString()
-                              .Split(' ')[0]
-                              .Trim();
-
-            this.ShowSettingsPanels(selected);
-
-            this.FormPicturePanel?.SetStrategy(selected);
-        }
 
         private void SetDefaultParameters()
         {
@@ -86,6 +74,20 @@ namespace Fractalizer.Core.Controls
         private void SettingsPanel_Load(object sender, EventArgs e)
         {
             this.HideSettingsPanels();
+        }
+
+
+        private void fractalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.HideSettingsPanels();
+            string selected = this.fractalComboBox.SelectedItem
+                              .ToString()
+                              .Split(' ')[0]
+                              .Trim();
+
+            this.ShowSettingsPanels(selected);
+
+            this.FormPicturePanel?.SetStrategy(selected);
         }
 
         private void btnRender_Click(object sender, EventArgs e)

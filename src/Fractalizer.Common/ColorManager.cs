@@ -9,6 +9,7 @@ namespace Fractalizer.Common
         private List<Color> palette;
         public int interval = Constants.ColorsInterval;
 
+        /// <returns>A collection of the base color's shades </returns>
         public IEnumerable<Color> LoadSingleColorPalette(Color baseColor)
         {
            this.palette = new List<Color>();
@@ -22,6 +23,7 @@ namespace Fractalizer.Common
             return this.palette;
         }
 
+        /// <returns>A collection of different colors </returns>
         public IEnumerable<Color> LoadColorfulPalette()
         {
            this.palette = new List<Color>();

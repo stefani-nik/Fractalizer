@@ -14,7 +14,7 @@ using Fractalizer.Strategies.Contracts;
 namespace Fractalizer.Core.Decorators
 {
     /// <summary>
-    /// Class responsible for rendering the Mandelbrot set 
+    /// Class responsible for rendering the chosen fractal 
     /// and getting information about its parameters
     /// </summary>
     public class Renderer : IRenderer

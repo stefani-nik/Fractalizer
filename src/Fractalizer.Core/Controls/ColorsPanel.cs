@@ -27,6 +27,8 @@ namespace Fractalizer.Core.Controls
            AdjustCheckboxProperties();
         }
 
+        // Toggle color panel elements
+
         private void AdjustCheckboxProperties()
         {
             if (this.colorfulCheckBox.Checked)
